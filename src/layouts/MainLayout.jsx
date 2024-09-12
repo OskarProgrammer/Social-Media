@@ -12,7 +12,7 @@ export const MainLayout = () => {
     return (
         <>
             <NavBar />
-            <div className="m-10 flex justify-center text-blue-500 text-2xl p-5 shadow-lg">
+            <div className="m-10 flex justify-center text-blue-500 text-2xl p-5 w-6/12 shadow-lg mx-auto">
                 <Outlet />
             </div>
         </>
