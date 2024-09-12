@@ -8,11 +8,14 @@ import './App.css'
 // importing layouts
 import { MainLayout } from './layouts/MainLayout'
 
+// importing pages
+import { MainPage } from "./pages/MainPage"
+
 
 // creating router
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<MainLayout/>}>
-
+    <Route index element={<MainPage/>}/>
 
   </Route>
 ))
