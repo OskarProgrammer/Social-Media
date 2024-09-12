@@ -8,18 +8,17 @@
     @apply transition-all duration-500 ease-out;
   }
 
-
   .navBar {
     @apply w-full p-3 pb-5 flex lg:sm:flex-row sm:flex-col flex-col gap-4 border-b-8 border-blue-500;
     @apply text-white lg:sm:grid grid-cols-5 text-3xl font-bold;
   }
 
   .form {
-    @apply lg:sm:w-5/12 sm:w-6/12 w-full rounded p-5 flex flex-col gap-4 justify-center shadow-2xl;
+    @apply lg:sm:w-5/12 sm:w-8/12 w-full rounded-3xl p-5 flex flex-col gap-4 justify-center shadow-2xl;
   }
 
   .inputField {
-    @apply p-3 text-center w-6/12 mx-auto border-b-4 border-b-blue-500 efectOfTransition;
+    @apply p-3 text-center lg:sm:w-6/12 sm:w-8/12 mx-auto border-b-4 border-b-blue-500 efectOfTransition;
   }
 
   .inputField:hover{
@@ -39,7 +38,7 @@
   }
 
   .titleOfForm {
-    @apply mx-auto text-6xl p-3 font-bold m-3;
+    @apply mx-auto text-6xl p-3 font-bold m-3 text-center;
   }
 
   .btn-blue {
