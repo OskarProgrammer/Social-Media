@@ -10,7 +10,11 @@ export const NavBar = () => {
             
             {/* left side of navBar */}
             <div className="col-start-1 col-span-2 flex lg:sm:justify-start justify-center ">
-                <button className="btn-blue lg:sm:block sm:hidden hidden">Main Page</button>
+
+                <NavLink className="btn-blue lg:sm:block sm:hidden hidden">
+                    Main Page
+                </NavLink>
+                
             </div>
 
             {/* middle of the navBar */}
@@ -21,7 +25,9 @@ export const NavBar = () => {
             {/* right side of the navBar */}
             <div className="col-start-4 col-span-2 flex lg:sm:justify-end justify-between ">
 
-                <button className="btn-blue lg:sm:hidden">Main Page</button>
+                <NavLink to="/" className="btn-blue lg:sm:hidden">
+                    Main Page
+                </NavLink>
 
                 <NavLink to="/login" className="btn-blue">
                     Sign in
