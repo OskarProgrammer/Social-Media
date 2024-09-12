@@ -15,7 +15,7 @@ export const LoginPage = () => {
 
             <input type="password" className="inputField" placeholder="Password"/>
 
-            <button className="btn-blue mx-auto">Sign in</button>
+            <button className="btn-green mx-auto">Sign in</button>
 
         </Form>
     )

@@ -15,7 +15,7 @@ export const RegisterPage = () => {
 
             <input type="password" className="inputField" placeholder="Confirm password"/>
 
-            <button className="btn-blue mx-auto">Sign up</button>
+            <button className="btn-green mx-auto">Sign up</button>
 
         </Form>
     )
