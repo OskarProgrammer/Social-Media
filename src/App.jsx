@@ -10,12 +10,17 @@ import { MainLayout } from './layouts/MainLayout'
 
 // importing pages
 import { MainPage } from "./pages/MainPage"
+import { LoginPage } from './pages/LoginPage'
 
 
 // creating router
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<MainLayout/>}>
+    {/* main page */}
     <Route index element={<MainPage/>}/>
+
+    {/* sign in page */}
+    <Route path="login" element={<LoginPage/>}/>
 
   </Route>
 ))

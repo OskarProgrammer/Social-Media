@@ -1,4 +1,7 @@
 
+// importing functions and components from react library
+import { NavLink } from "react-router-dom"
+
 export const NavBar = () => {
 
 
@@ -17,8 +20,13 @@ export const NavBar = () => {
             
             {/* right side of the navBar */}
             <div className="col-start-4 col-span-2 flex lg:sm:justify-end justify-between ">
+
                 <button className="btn-blue lg:sm:hidden">Main Page</button>
-                <button className="btn-blue">Sign in</button>
+
+                <NavLink to="/login" className="btn-blue">
+                    Sign in
+                </NavLink>
+
                 <button className="btn-blue">Sign up</button>
             </div>
 

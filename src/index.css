@@ -4,14 +4,47 @@
 
 @layer components{
   
+  .efectOfTransition {
+    @apply transition-all duration-500 ease-out;
+  }
+
+
   .navBar {
     @apply w-full p-3 pb-5 flex lg:sm:flex-row sm:flex-col flex-col gap-4 border-b-8 border-blue-500;
     @apply text-white lg:sm:grid grid-cols-5 text-3xl font-bold;
   }
 
+  .form {
+    @apply lg:sm:w-5/12 sm:w-6/12 w-full rounded p-5 flex flex-col gap-4 justify-center shadow-2xl;
+  }
+
+  .inputField {
+    @apply p-3 text-center w-6/12 mx-auto border-b-4 border-b-blue-500 efectOfTransition;
+  }
+
+  .inputField:hover{
+    @apply bg-blue-500 rounded-lg;
+  }
+
+  .inputField:focus{
+    outline:none;
+  }
+
+  .inputField::placeholder{
+    @apply text-blue-500
+  }
+
+  .inputField::placeholder:hover{
+    @apply text-white
+  }
+
+  .titleOfForm {
+    @apply mx-auto text-6xl p-3 font-bold m-3;
+  }
+
   .btn-blue {
     @apply lg:sm:w-40 w-40 bg-white text-blue-500 m-3 rounded-lg p-5 font-bold text-lg;
-    @apply transition-all duration-500 ease-out border-4 border-blue-500;
+    @apply efectOfTransition border-4 border-blue-500 text-center;
   }
 
   .btn-blue:hover {
