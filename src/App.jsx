@@ -1,6 +1,6 @@
 
 // importing functions and components from react library
-import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 
 // importing css
 import './App.css'
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      
+      <RouterProvider router={router}/>
     </>
   )
 }
