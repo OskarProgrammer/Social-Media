@@ -13,9 +13,9 @@ export const LoginPage = () => {
 
             <input type="text" className="inputField" placeholder="Login"/>
 
-            <input type="text" className="inputField" placeholder="Password"/>
+            <input type="password" className="inputField" placeholder="Password"/>
 
-            <button className="btn-blue mx-auto">Login</button>
+            <button className="btn-blue mx-auto">Sign in</button>
 
         </Form>
     )

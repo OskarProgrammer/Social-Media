@@ -27,7 +27,10 @@ export const NavBar = () => {
                     Sign in
                 </NavLink>
 
-                <button className="btn-blue">Sign up</button>
+                <NavLink to="/register" className="btn-blue">
+                    Sign up
+                </NavLink>
+
             </div>
 
         </div>
