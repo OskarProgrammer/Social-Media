@@ -22,7 +22,7 @@
   }
 
   .inputField:hover{
-    @apply bg-blue-500 rounded-tl-lg rounded-tr-lg;
+    @apply bg-blue-500 rounded-tl-lg rounded-tr-lg text-white;
   }
 
   .inputField:focus{
