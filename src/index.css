@@ -91,6 +91,10 @@
     @apply border-4 text-center shadow-inner;
   }
 
+  .btn > i {
+    @apply text-5xl
+  }
+
   .btn:hover {
     @apply shadow-lg;
   }

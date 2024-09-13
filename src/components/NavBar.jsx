@@ -13,8 +13,14 @@ export const NavBar = ( props ) => {
             <div className="col-start-1 col-span-2 flex lg:sm:justify-start justify-center ">
 
                 <NavLink className="btn-blue lg:sm:block sm:hidden hidden">
-                    Main Page
+                    <i className="bi bi-house"/>
                 </NavLink>
+
+                {currentUser.isLogged ? 
+                    <NavLink to="/account" className="btn-blue lg:sm:block sm:hidden hidden">
+                        <i className="bi bi-person"/>
+                    </NavLink> 
+                : ""}
                 
             </div>
 
@@ -27,8 +33,14 @@ export const NavBar = ( props ) => {
             <div className="col-start-4 col-span-2 flex lg:sm:justify-end justify-between ">
 
                 <NavLink to="/" className="btn-blue lg:sm:hidden">
-                    Main Page
+                    <i className="bi bi-house"/>
                 </NavLink>
+
+                {currentUser.isLogged ? 
+                    <NavLink to="/account" className="btn-blue lg:sm:hidden">
+                        <i className="bi bi-person"/>
+                    </NavLink> 
+                : ""}
 
                 { !currentUser.isLogged ? 
                     <>
@@ -43,7 +55,7 @@ export const NavBar = ( props ) => {
                     : 
                     <>
                         <NavLink to="/account/logOut" className="btn-red">
-                            Log out
+                            <i className="bi bi-box-arrow-right"/>
                         </NavLink>
                     </>
                 }
