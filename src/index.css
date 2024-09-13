@@ -92,7 +92,7 @@
   }
 
   .btn > i {
-    @apply text-5xl
+    @apply text-4xl
   }
 
   .btn:hover {
