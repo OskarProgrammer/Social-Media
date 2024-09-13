@@ -14,7 +14,7 @@
   }
 
   .accountLayout{
-    @apply grid w-full gap-4 font-bold;
+    @apply grid w-9/12 gap-4 font-bold;
     @apply grid-cols-5 grid-rows-5 lg:sm:grid-rows-4 gap-4;
   }
 
@@ -30,7 +30,7 @@
     overflow-y: auto;
   }
 
-  .content > p {
+  .content > p:first-child {
     @apply rounded-b-lg underline underline-offset-8;
   }
 
