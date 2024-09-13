@@ -1,6 +1,6 @@
 
 // importing funcitons and components from react library
-import { Form } from "react-router-dom"
+import { Form, Link } from "react-router-dom"
 
 export const RegisterPage = () => {
 
@@ -14,6 +14,15 @@ export const RegisterPage = () => {
             <input type="password" className="inputField" placeholder="Password"/>
 
             <input type="password" className="inputField" placeholder="Confirm password"/>
+
+            <p className="informationTag"> 
+                Have got account already ?  
+
+                <Link to="/login" className="linkTo">
+                    Click here
+                </Link>
+
+            </p>
 
             <button className="btn-green mx-auto">Sign up</button>
 

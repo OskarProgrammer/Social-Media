@@ -41,6 +41,18 @@
     @apply mx-auto text-6xl p-3 font-bold m-3 text-center;
   }
 
+  .informationTag {
+    @apply text-lg m-5 text-center 
+  }
+
+  .linkTo {
+    @apply efectOfTransition ms-2
+  }
+
+  .linkTo:hover {
+    @apply text-blue-950 underline underline-offset-4
+  }
+
   .btn {
     @apply lg:sm:w-40 w-40 m-3 rounded-lg p-5 font-bold text-lg efectOfTransition border-4 text-center;
   }
