@@ -12,6 +12,8 @@ import { MainLayout, mainLoader } from './layouts/MainLayout'
 import { MainPage } from "./pages/MainPage"
 import { loginAction, LoginPage } from './pages/LoginPage'
 import { RegisterPage } from './pages/RegisterPage'
+import { AccountLayout } from './layouts/AccountLayout'
+import { logOutLoader, LogOutPage } from './pages/LogOutPage'
 
 
 // creating router
@@ -25,6 +27,12 @@ const router = createBrowserRouter(createRoutesFromElements(
 
     {/* sign up page */}
     <Route path="register" element={<RegisterPage/>}/>
+
+    {/* account page */}
+    <Route path="account/" element={<AccountLayout/>}>
+      <Route path="logOut" element={<LogOutPage/>} loader={logOutLoader}/>
+
+    </Route>
 
   </Route>
 ))

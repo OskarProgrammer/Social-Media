@@ -42,7 +42,7 @@ export const NavBar = ( props ) => {
                     </> 
                     : 
                     <>
-                        <NavLink to="/logOut" className="btn-red">
+                        <NavLink to="/account/logOut" className="btn-red">
                             Log out
                         </NavLink>
                     </>

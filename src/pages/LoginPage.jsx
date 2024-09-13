@@ -67,5 +67,5 @@ export const loginAction = async ( {request} ) => {
         await axios.put("http://localhost:3000/currentUser/" , currentUser)
     } catch { return { error : "Something went wrong " } }
 
-    return redirect("/")
+    return redirect("/account/")
 }
