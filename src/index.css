@@ -71,7 +71,7 @@
   }
 
   .btn-blue:hover {
-    @apply bg-blue-500 text-white;
+    @apply bg-blue-500 text-white shadow-blue-500 border-blue-500;
   }
 
   .btn-red {
@@ -80,7 +80,7 @@
   }
 
   .btn-red:hover {
-    @apply bg-red-700 text-white ;
+    @apply bg-red-700 text-white shadow-red-700 border-red-700;
   }
 
   .btn-green {
@@ -89,7 +89,7 @@
   }
 
   .btn-green:hover {
-    @apply bg-green-600 text-white;
+    @apply bg-green-600 text-white shadow-green-600 border-green-600;
   }
 
 }
