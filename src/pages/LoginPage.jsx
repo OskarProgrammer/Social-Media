@@ -58,8 +58,13 @@ export const loginAction = async ( {request} ) => {
 
     if ( !user.length ) { return { error : "Login or password is invalid" } }
 
+    let currentUser = {
+        id : user[0].id,
+        isLogged : true
+    }
+
     try {
-        await axios.put("http://localhost:3000/currentUser/" ,user[0])
+        await axios.put("http://localhost:3000/currentUser/" , currentUser)
     } catch { return { error : "Something went wrong " } }
 
     return redirect("/")

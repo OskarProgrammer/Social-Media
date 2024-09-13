@@ -6,7 +6,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import './App.css'
 
 // importing layouts
-import { MainLayout } from './layouts/MainLayout'
+import { MainLayout, mainLoader } from './layouts/MainLayout'
 
 // importing pages
 import { MainPage } from "./pages/MainPage"
@@ -16,7 +16,7 @@ import { RegisterPage } from './pages/RegisterPage'
 
 // creating router
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<MainLayout/>}>
+  <Route path="/" element={<MainLayout/>} loader={mainLoader}>
     {/* main page */}
     <Route index element={<MainPage/>}/>
 

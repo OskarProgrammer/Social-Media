@@ -2,8 +2,9 @@
 // importing functions and components from react library
 import { NavLink } from "react-router-dom"
 
-export const NavBar = () => {
+export const NavBar = ( props ) => {
 
+    const currentUser = props.currentUser
 
     return (
         <div className="navBar">
@@ -29,13 +30,23 @@ export const NavBar = () => {
                     Main Page
                 </NavLink>
 
-                <NavLink to="/login" className="btn-blue">
-                    Sign in
-                </NavLink>
+                { !currentUser.isLogged ? 
+                    <>
+                        <NavLink to="/login" className="btn-blue">
+                            Sign in
+                        </NavLink>
 
-                <NavLink to="/register" className="btn-blue">
-                    Sign up
-                </NavLink>
+                        <NavLink to="/register" className="btn-blue">
+                            Sign up
+                        </NavLink>
+                    </> 
+                    : 
+                    <>
+                        <NavLink to="/logOut" className="btn-red">
+                            Log out
+                        </NavLink>
+                    </>
+                }
 
             </div>
 

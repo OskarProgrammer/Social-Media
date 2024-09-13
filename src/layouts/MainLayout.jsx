@@ -1,20 +1,51 @@
 
 // importing functions and components from react library
-import { Outlet } from "react-router-dom"
+import { Outlet, useLoaderData } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 // importing components
 import { NavBar } from "../components/NavBar"
 
+// importing api functions
+import axios from "axios"
 
 export const MainLayout = () => {
 
+    // getting loaderData
+    const currentUserLoader = useLoaderData()
+
+    // creating useState variable
+    let [currentUser, setCurrentUser] = useState(currentUserLoader)
+
+    // creating useEffect function to update
+    useEffect( () => {
+        const interval = setInterval( async () => {
+
+            currentUser = await axios.get("http://localhost:3000/currentUser/")
+                                   .then( (data) => { return data.data } )
+                                   .catch( (error) => { return error } )
+            setCurrentUser(currentUser)
+
+        },50)
+
+        return () => { clearInterval(interval) }
+    } )
 
     return (
         <>
-            <NavBar />
+            <NavBar currentUser={currentUser} />
             <div className="m-10 flex justify-center text-blue-500 text-2xl p-5 mx-auto">
                 <Outlet />
             </div>
         </>
     )
+}
+
+export const mainLoader = async () => {
+    // getting currentUser
+    const currentUser = await axios.get("http://localhost:3000/currentUser/")
+                                   .then( (data) => { return data.data } )
+                                   .catch( (error) => { return error } )
+    
+    return currentUser
 }
