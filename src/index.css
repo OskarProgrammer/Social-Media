@@ -42,7 +42,11 @@
   }
 
   .informationTag {
-    @apply text-lg m-5 text-center 
+    @apply text-lg my-1 text-center 
+  }
+
+  .errorMessage {
+    @apply informationTag text-red-600 font-bold
   }
 
   .linkTo {

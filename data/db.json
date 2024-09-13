@@ -1,8 +1,14 @@
 {
-    "currentUser" : {
-
-    },
-    "users" : {
-        
+  "currentUser": {
+    "id": "22",
+    "login": "Oskar",
+    "password": "root"
+  },
+  "users": [
+    {
+      "id": "22",
+      "login": "Oskar",
+      "password": "root"
     }
+  ]
 }
