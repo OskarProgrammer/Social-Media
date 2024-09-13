@@ -1,6 +1,5 @@
 
 // importing api functions
-import axios from "axios"
 import { getCurrentUserInfo } from "../api_functions/functions"
 
 // importing components
@@ -9,6 +8,9 @@ import { CommentsInfoTab } from "../components/CommentsInfoTab"
 import { LikesInfoTab } from "../components/LikesInfoTab"
 import { PostsInfoTab } from "../components/PostsInfoTab"
 import { UserInfoTab } from "../components/UserInfoTab"
+import { FollowingInfoTab } from "../components/FollowingInfoTab"
+import { FollowersInfoTab } from "../components/FollowersInfoTab"
+
 
 // importing functions and components from react library
 import { useLoaderData } from "react-router-dom"
@@ -52,7 +54,11 @@ export const AccountMainPage = () => {
             <LikesInfoTab />
 
             <CommentsInfoTab />
-            
+
+            <FollowingInfoTab currentUser={currentUser}/>
+
+            <FollowersInfoTab currentUser={currentUser}/>
+
         </div>
     )
 }

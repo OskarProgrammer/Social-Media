@@ -64,7 +64,9 @@ export const registerAction = async ( { request } ) => {
     const newUser = {
         id : crypto.randomUUID(),
         login : login,
-        password : password
+        password : password,
+        followers : [],
+        following : [],
     }
 
     try {
