@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 
 export const UserInfoTab = (props) => {
 
@@ -7,6 +8,7 @@ export const UserInfoTab = (props) => {
 
     return (
         <div className="card col-span-full lg:sm:col-span-2 lg:sm:row-span-3 lg:sm:col-start-1 lg:sm:row-start-2">
+            
             <div className="content lg:sm:text-4xl text-3xl">
                 <p>User info</p>
 
@@ -18,8 +20,8 @@ export const UserInfoTab = (props) => {
 
             </div>
 
-            <button className="btn-green mx-auto" >See details</button>
-            
+            <NavLink to="/account/userInfo" className="btn-green mx-auto" >See details</NavLink>
+
         </div>
     )
 }

@@ -70,6 +70,15 @@
     @apply mx-auto text-6xl p-3 font-bold m-3 text-center;
   }
 
+  .userTab {
+    @apply lg:sm:w-6/12 w-10/12 shadow-xl p-5 text-center flex flex-col gap-8;
+    @apply lg:sm:h-96 grid lg:sm:grid-cols-2 grid-rows-3;
+  }
+
+  .title {
+    @apply text-3xl font-bold
+  }
+
   .informationTag {
     @apply text-lg my-1 text-center 
   }

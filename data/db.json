@@ -7,12 +7,16 @@
     {
       "id": "22",
       "login": "Oskar",
-      "password": "root"
+      "password": "root",
+      "followers" : [],
+      "following" : []
     },
     {
       "id": "c66d10ff-87f2-4639-a580-a458e12cf42d",
       "login": "Robert",
-      "password": "123"
+      "password": "123",
+      "followers" : [],
+      "following" : []
     }
   ]
 }
