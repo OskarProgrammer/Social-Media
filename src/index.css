@@ -75,6 +75,19 @@
     @apply lg:sm:h-96 grid lg:sm:grid-cols-2 grid-rows-3;
   }
 
+  .postTab {
+    @apply border border-8 p-3 m-2 rounded-lg border-blue-500;
+    @apply efectOfTransition;
+    @apply hover:border-white hover:bg-white hover:text-blue-500 hover:shadow-white hover:shadow-md;
+    scroll-snap-align: center;
+  }
+
+  .postsList {
+    @apply flex flex-col gap-5 w-6/12 mx-auto;
+    height: 150px;
+    overflow-y: auto;
+  }
+
   .title {
     @apply text-3xl font-bold
   }

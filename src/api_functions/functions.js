@@ -15,3 +15,14 @@ export const getCurrentUserInfo = async () => {
 
     return currentUser
 }
+
+export const getPostsOfUser = async ( personID) => {
+
+    // getting all posts
+    const posts = await axios.get("http://localhost:3000/posts/").then((res) => { return res.data })
+
+    // getting user posts
+    let result = posts.filter( e => e.ownerID == personID )
+
+    return result 
+}
