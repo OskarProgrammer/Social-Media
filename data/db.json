@@ -8,15 +8,25 @@
       "id": "22",
       "login": "Oskar",
       "password": "root",
-      "followers" : [],
-      "following" : []
+      "followers": [],
+      "following": []
     },
     {
       "id": "c66d10ff-87f2-4639-a580-a458e12cf42d",
       "login": "Robert",
       "password": "123",
-      "followers" : [],
-      "following" : []
+      "followers": [],
+      "following": []
+    }
+  ],
+  "posts": [
+    {
+      "id": "efbe19ea-4005-4811-8fed-5371721df970",
+      "title": "test",
+      "desc": "test",
+      "img": "121",
+      "likes": [],
+      "ownerID": "22"
     }
   ]
 }

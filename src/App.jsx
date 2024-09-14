@@ -16,6 +16,7 @@ import { AccountLayout } from './layouts/AccountLayout'
 import { logOutLoader, LogOutPage } from './pages/LogOutPage'
 import { accountMainLoader, AccountMainPage } from './pages/AccountMainPage'
 import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
+import { createPostAction, NewPostPage } from './pages/NewPostPage'
 
 
 // creating router
@@ -38,7 +39,11 @@ const router = createBrowserRouter(createRoutesFromElements(
 
       {/* user info page */}
       <Route path="userInfo" element={<UserInfoPage/>} loader={userInfoLoader}/>
-      
+
+      {/* new post page */}
+      <Route path="newPost" element={<NewPostPage/>} action={createPostAction}/>
+
+
       {/* log out page */}
       <Route path="logOut" element={<LogOutPage/>} loader={logOutLoader}/>
 

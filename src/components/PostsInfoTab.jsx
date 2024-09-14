@@ -13,7 +13,7 @@ export const PostsInfoTab = () => {
 
 
             <div className="flex gap-3">
-                <NavLink to="/account/userInfo" className="btn-green mx-auto" >
+                <NavLink to="/account/newPost" className="btn-green mx-auto" >
                     <i className="bi bi-plus"/>
                 </NavLink>
 
