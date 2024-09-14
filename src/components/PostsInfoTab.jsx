@@ -9,13 +9,12 @@ import { PostTab } from "./PostTab"
 
 
 
-export const PostsInfoTab = () => {
+export const PostsInfoTab = ( {currentUser}) => {
 
     let [posts, setPosts] = useState()
     let [loading, setLoading] = useState(true)
 
     const getPosts = async () => {
-        const currentUser = await getCurrentUserInfo()
 
         posts = await getPostsOfUser(
             currentUser.id

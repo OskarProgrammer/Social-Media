@@ -1,10 +1,30 @@
 
 // importing functions and components from react library
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+// importing api functions
+import { getCommentsFromPost } from "../api_functions/functions"
+
+
 
 export const PostTab = ( { postInfo } ) => {
 
     let [loading, setLoading] = useState(true)
+    let [comments, setComments] = useState()
+
+    const getComments = async () => {
+        comments = await getCommentsFromPost(
+            postInfo.id
+        )
+        
+        setComments(comments)
+        setLoading(false)
+    }
+
+    useEffect(()=>{
+        getComments()
+    })
+    
 
     return (
         <>
@@ -19,7 +39,7 @@ export const PostTab = ( { postInfo } ) => {
                                 <i className="bi bi-hand-thumbs-up-fill"/> {postInfo.likes.length}
                             </p>
                             <p>
-                                <i className="bi bi-chat-fill"/> 
+                                <i className="bi bi-chat-fill"/> {comments.length}
                             </p>
                         </div>
 

@@ -26,3 +26,14 @@ export const getPostsOfUser = async ( personID) => {
 
     return result 
 }
+
+export const getCommentsFromPost = async ( postID ) => {
+
+    // getting all comments
+    const comments = await axios.get("http://localhost:3000/comments/").then((res)=>{ return res.data })
+
+    // getting comments from post
+    let result = comments.filter( e => e.postID == postID)
+
+    return result
+}

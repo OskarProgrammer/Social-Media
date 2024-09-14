@@ -49,7 +49,7 @@ export const AccountMainPage = () => {
 
             <UserInfoTab currentUser={currentUser}/>
 
-            <PostsInfoTab />
+            <PostsInfoTab currentUser={currentUser}/>
 
             <LikesInfoTab />
 
