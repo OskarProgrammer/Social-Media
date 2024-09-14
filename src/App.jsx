@@ -17,7 +17,7 @@ import { logOutLoader, LogOutPage } from './pages/LogOutPage'
 import { accountMainLoader, AccountMainPage } from './pages/AccountMainPage'
 import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
 import { createPostAction, NewPostPage } from './pages/NewPostPage'
-import { postDetailsLoader, PostDetailsPage } from './pages/PostDetailsPage'
+import { PostDetailsPage } from './pages/PostDetailsPage'
 
 
 // creating router
@@ -33,7 +33,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="register" element={<RegisterPage/>} action={registerAction}/>
 
     {/* post details page */}
-    <Route path="post/:postID" element={<PostDetailsPage/>} loader={postDetailsLoader}/>
+    <Route path="post/:postID" element={<PostDetailsPage/>}/>
 
     {/* account page */}
     <Route path="account/" element={<AccountLayout/>}>

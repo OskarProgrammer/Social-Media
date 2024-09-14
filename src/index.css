@@ -89,12 +89,12 @@
   }
 
   .postDetails {
-    @apply lg:sm:w-4/12 w-10/12 shadow-lg rounded-xl shadow-gray-500 text-center;
+    @apply lg:sm:w-4/12 w-10/12 shadow-2xl rounded-xl text-center bg-gray-950 text-white shadow-gray-950;
     @apply font-bold text-4xl flex flex-col gap-3 p-5;
   }
 
   .image {
-    @apply m-5 w-11/12 mx-auto min-h-[400px] shadow-slate-500 shadow-lg rounded-xl;
+    @apply m-5 w-11/12 mx-auto min-h-[400px] shadow-slate-500 shadow-lg rounded-xl bg-white;
   }
 
   .infoBar {
@@ -102,16 +102,15 @@
   }
 
   .authorImage {
-    @apply col-span-1 row-span-2 rounded-full  text-lg my-auto flex flex-col gap-2 ;
+    @apply col-span-1 row-span-2 rounded-full  text-lg my-auto flex flex-col gap-2 text-white;
   }
 
   .authorImage > i {
     @apply text-[60px]
   }
 
-
   .informations {
-    @apply row-span-2 col-span-3 flex flex-col ms-2 p-4 shadow-lg font-extrabold;
+    @apply row-span-2 col-span-3 flex flex-col ms-2 p-4 font-extrabold text-white bg-white rounded shadow-md shadow-white;
   }
 
   .title {
@@ -152,9 +151,19 @@
   }
 
   .commentsSection {
-    @apply shadow-lg shadow-gray-600 p-3 rounded text-xl flex flex-col gap-4;
+    @apply p-3 text-xl flex flex-col gap-4;
   }
 
+  .commentTab {
+    @apply p-5 shadow-lg shadow-gray-600 rounded-xl bg-white text-gray-950;
+    @apply grid grid-cols-4 grid-rows-2
+  }
+
+  .comment {
+    @apply row-span-2 col-span-3 text-center text-wrap w-full h-32 flex flex-col;
+    overflow-y: auto;
+    word-break: break-all;
+  }
 
   .title {
     @apply text-3xl font-bold
