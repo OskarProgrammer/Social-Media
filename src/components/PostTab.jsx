@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 
 // importing api functions
 import { getCommentsFromPost } from "../api_functions/functions"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -34,14 +35,14 @@ export const PostTab = ( { postInfo } ) => {
 
                         <p>{postInfo.title}</p>
                         
-                        <div className="flex flex-row gap-5 justify-center">
+                        <NavLink to={`/post/${postInfo.id}`} className="flex flex-row gap-5 justify-center">
                             <p>
                                 <i className="bi bi-hand-thumbs-up-fill"/> {postInfo.likes.length}
                             </p>
                             <p>
                                 <i className="bi bi-chat-fill"/> {comments.length}
                             </p>
-                        </div>
+                        </NavLink >
 
                     </div>
             }
