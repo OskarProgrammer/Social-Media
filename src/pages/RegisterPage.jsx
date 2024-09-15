@@ -5,6 +5,9 @@ import { Form, Link, redirect, useActionData } from "react-router-dom"
 // importing api functions
 import axios from "axios"
 
+// importing componenst
+import { PageTitle } from "../components/PageTitle"
+
 
 export const RegisterPage = () => {
 
@@ -13,6 +16,8 @@ export const RegisterPage = () => {
 
     return (
         <Form method="POST" action="/register" className="form">
+            
+            <PageTitle title="Sign up"/>
 
             <h2 className="titleOfForm">Register form</h2>
 

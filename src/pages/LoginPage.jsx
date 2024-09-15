@@ -5,6 +5,9 @@ import { Form, Link, redirect, useActionData } from "react-router-dom"
 // importing api functions
 import axios from "axios"
 
+// importing components
+import { PageTitle } from "../components/PageTitle"
+
 
 export const LoginPage = () => {
 
@@ -14,6 +17,7 @@ export const LoginPage = () => {
 
     return (
         <Form method="POST" action="/login" className="form">
+            <PageTitle title="Sign in" />
 
             <h2 className="titleOfForm">Login form</h2>
 

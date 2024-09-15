@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom"
 
 // importing components
 import { PostDetailsTab } from "../components/PostDetailsTab"
+import { PageTitle } from "../components/PageTitle"
+
 
 
 export const PostDetailsPage = () => {
@@ -13,6 +15,7 @@ export const PostDetailsPage = () => {
 
     return(
         <>
+            <PageTitle title={`Post ${postID}`}/>
             <PostDetailsTab postID={postID}/>
         </>
     )

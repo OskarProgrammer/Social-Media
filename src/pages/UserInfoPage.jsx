@@ -18,6 +18,9 @@ export const UserInfoPage = () => {
 
     return (
         <div className="userTab">
+
+            <PageTitle title="User info"/>
+
             <div className="title col-span-full my-auto mx-auto">
                 User info
             </div>

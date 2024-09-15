@@ -10,6 +10,7 @@ import { PostsInfoTab } from "../components/PostsInfoTab"
 import { UserInfoTab } from "../components/UserInfoTab"
 import { FollowingInfoTab } from "../components/FollowingInfoTab"
 import { FollowersInfoTab } from "../components/FollowersInfoTab"
+import { PageTitle } from "../components/PageTitle"
 
 
 // importing functions and components from react library
@@ -44,6 +45,7 @@ export const AccountMainPage = () => {
 
     return (
         <div className="accountLayout">
+            <PageTitle title="Account Page" />
 
             <AccountInfoTab />
 

@@ -6,6 +6,9 @@ import { getCurrentUserInfo } from "../api_functions/functions"
 // importing functions and components from react library
 import { Form, redirect, useActionData } from "react-router-dom"
 
+// importing components
+import { PageTitle } from "../components/PageTitle"
+
 
 export const NewPostPage = () => {
 
@@ -15,6 +18,7 @@ export const NewPostPage = () => {
 
     return (
         <Form className="form" method="POST" action="/account/newPost/">
+            <PageTitle title="Create new post" />
 
             <h2 className="titleOfForm">Create your new post</h2>
             
