@@ -25,7 +25,7 @@ export const NavBar = ( props ) => {
             </div>
 
             {/* middle of the navBar */}
-            <div className="col-start-3 col-span-1 text-blue-500 flex justify-center my-auto text-center">
+            <div className="col-start-3 col-span-1 text-gray-950 flex justify-center my-auto text-center">
                 Social Media APP
             </div>
             

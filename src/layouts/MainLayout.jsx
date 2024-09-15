@@ -34,7 +34,7 @@ export const MainLayout = () => {
     return (
         <>
             <NavBar currentUser={currentUser} />
-            <div className="m-10 flex justify-center text-blue-500 text-2xl p-5 mx-auto">
+            <div className="m-10 flex justify-center text-white text-2xl p-5 mx-auto">
                 <Outlet />
             </div>
         </>

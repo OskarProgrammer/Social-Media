@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base{}
+
 @layer components{
   
   .efectOfTransition {
@@ -9,7 +11,7 @@
   }
 
   .navBar {
-    @apply sticky top-0 w-full bg-white p-3 pb-5 flex lg:sm:flex-row sm:flex-col flex-col gap-4 border-b-8 border-blue-500;
+    @apply sticky top-0 w-full bg-white p-3 pb-5 flex lg:sm:flex-row sm:flex-col flex-col gap-4 border-b-8 border-gray-950;
     @apply text-white lg:sm:grid grid-cols-5 text-3xl font-bold;
   }
 
@@ -19,7 +21,7 @@
   }
 
   .card {
-    @apply p-3 shadow-2xl text-center rounded-lg efectOfTransition;
+    @apply p-3 shadow-2xl text-center rounded-lg efectOfTransition bg-gray-950;
     @apply flex flex-col;
     @apply hover:text-white hover:bg-blue-500 hover:cursor-pointer hover:shadow-blue-500;
   }
@@ -39,7 +41,7 @@
   }
 
   .styleOfTitle {
-    @apply lg:sm:text-5xl lg:sm:p-5 text-5xl my-auto;
+    @apply lg:sm:text-5xl lg:sm:p-5 text-5xl my-auto ;
   }
 
   .form {
@@ -76,7 +78,7 @@
   }
 
   .postTab {
-    @apply border border-8 p-3 m-2 rounded-lg border-blue-500;
+    @apply border border-8 p-3 m-2 rounded-lg border-white;
     @apply efectOfTransition;
     @apply hover:border-white hover:bg-white hover:text-blue-500 hover:shadow-white hover:shadow-md;
     scroll-snap-align: center;
