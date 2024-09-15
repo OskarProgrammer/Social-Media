@@ -27,7 +27,7 @@
   }
   
   .content {
-    @apply pt-8 ;
+    @apply pt-8 flex flex-col gap-2;
     height: 250px;
     overflow-y: auto;
   }

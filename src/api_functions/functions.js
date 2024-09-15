@@ -48,3 +48,14 @@ export const getCommentsOfUser = async ( userID ) => {
 
     return result
 }
+
+export const getLikesOfUser = async ( userID ) => {
+    
+    // getting all posts
+    const posts = await axios.get("http://localhost:3000/posts/").then((res)=>{ return res.data })
+
+    // getting likes of user
+    let result = posts.filter( e => e.likes.includes(userID))
+
+    return result
+}

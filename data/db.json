@@ -25,7 +25,9 @@
       "title": "test",
       "desc": "test",
       "img": "121",
-      "likes": [],
+      "likes": [
+        "22"
+      ],
       "ownerID": "22"
     },
     {

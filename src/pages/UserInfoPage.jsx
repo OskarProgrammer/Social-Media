@@ -6,6 +6,9 @@ import { useState } from "react"
 // importing api functions
 import { getCurrentUserInfo } from "../api_functions/functions"
 
+// importing components
+import { PageTitle } from "../components/PageTitle"
+
 
 export const UserInfoPage = () => {
 
