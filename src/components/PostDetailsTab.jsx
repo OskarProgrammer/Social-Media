@@ -9,44 +9,64 @@ import { getCommentsFromPost, getCurrentUserInfo } from "../api_functions/functi
 // importing components
 import { CommentTab } from "./CommentTab"
 
+const useData = ( postID ) => {
 
-export const PostDetailsTab =  ({ postID }) => {
-
-    let [isExpanded , setIsExpanded] = useState(false)
     let [postInfo, setPostInfo] = useState()
     let [authorInfo, setAuthorInfo] = useState()
     let [currentUser, setCurrentUser] = useState()
     let [comments, setComments] = useState()
 
-    const fetchData = async () => {
-        // getting postInfo
-        postInfo = await axios.get(`http://localhost:3000/posts/${postID}`).then( (res) => {return res.data} )
-        setPostInfo(postInfo)
-
-        // getting author info
-        authorInfo = await axios.get(`http://localhost:3000/users/${postInfo.ownerID}`).then((res)=>{return res.data})
-        setAuthorInfo(authorInfo)
-
-        // getting currentUser
-        currentUser = await getCurrentUserInfo().catch( () => { return undefined } )
-        setCurrentUser(currentUser)
-
-        // getting comments 
-        comments = await getCommentsFromPost(postID).catch(()=>{ return undefined })
-        setComments(comments)
-
-    }
 
     useEffect(()=>{
-        fetchData()
+        const fetchData = async () => {
+            // getting postInfo
+            postInfo = await axios.get(`http://localhost:3000/posts/${postID}`).then( (res) => {return res.data} )
+            setPostInfo(postInfo)
+    
+            // getting author info
+            authorInfo = await axios.get(`http://localhost:3000/users/${postInfo.ownerID}`).then((res)=>{return res.data})
+            setAuthorInfo(authorInfo)
+    
+            // getting currentUser
+            currentUser = await getCurrentUserInfo().catch( () => { return undefined } )
+            setCurrentUser(currentUser)
+    
+            // getting comments 
+            comments = await getCommentsFromPost(postID).catch(()=>{ return undefined })
+            setComments(comments)
+            
+        }
+
+        return () => { fetchData() }
     },[])
+
+    return [postInfo,
+        authorInfo,
+        currentUser,
+        comments]
+}
+
+
+export const PostDetailsTab =  ({ postID }) => {
+
+    let [isExpanded , setIsExpanded] = useState(false)
+    let [comment, setComment] = useState("")
+
+    let [postInfoLoader, authorInfo, currentUser, commentsLoader] = useData( postID )
+    let [postInfo, setPostInfo] = useState(postInfoLoader)
+    let [commentsInfo, setCommentsInfo] = useState(commentsLoader)
+
 
     // useEffect 
     useEffect(()=>{
         const interval = setInterval( async () => {
 
-            postInfo  = await axios.get(`http://localhost:3000/posts/${postInfo.id}`).then((res)=>{ return res.data })
+            postInfo  = await axios.get(`http://localhost:3000/posts/${postInfoLoader.id}`).then((res)=>{ return res.data })
             setPostInfo(postInfo)
+
+            // getting comments 
+            commentsInfo = await getCommentsFromPost(postID).catch(()=>{ return undefined })
+            setCommentsInfo(commentsInfo)
 
         },100)
 
@@ -65,6 +85,23 @@ export const PostDetailsTab =  ({ postID }) => {
             await axios.put(`http://localhost:3000/posts/${postInfo.id}`, postInfo)
         } catch { throw new Error("Something went wrong")}
 
+    }
+
+    const createComment = async () => {
+
+        // creating newComment object
+        const newComment = {
+            id : crypto.randomUUID(),
+            ownerID: currentUser.id,
+            postID: postInfo.id,
+            comment: comment
+        }
+
+        try {
+            await axios.post(`http://localhost:3000/comments/`, newComment)
+        } catch { throw new Error("Error during creating new comment") }
+
+        setComment("")
     }
 
     
@@ -101,7 +138,7 @@ export const PostDetailsTab =  ({ postID }) => {
 
                     <button className={`btn border-0  shadow-none ${isExpanded ? "active" : "notActive"}`} onClick={()=>{setIsExpanded(!isExpanded)}}>
                         <i className="bi bi-chat-fill"/>
-                        <p className="text-gray-500">Comments {comments?.length}</p>
+                        <p className="text-gray-500">Comments {commentsInfo?.length}</p>
                     </button>
 
                 </div>
@@ -109,7 +146,17 @@ export const PostDetailsTab =  ({ postID }) => {
                 {isExpanded 
                             ?   <div className="commentsSection">
                                     <p>Comment Section</p>
-                                    {comments.map((comment)=>(
+                                    <div className="grid grid-cols-4 grid-rows-1 gap-3 text-gray-950">
+
+                                        <input  type="text" 
+                                                className="commentInput" 
+                                                placeholder={`You are commenting as ${currentUser?.login}`}
+                                                onChange={(e)=>{setComment(e.target.value)}}/>
+
+                                        <button className="commentInputBtn"
+                                                onClick={()=>{ createComment() }}>Send</button>
+                                    </div>
+                                    {commentsInfo?.map((comment)=>(
                                         <CommentTab commentInfo={comment} />
                                     ))}
                                 </div> 

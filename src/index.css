@@ -234,7 +234,21 @@
   }
 
   .commentCard {
-    @apply bg-white text-gray-950 p-3 rounded-xl
+    @apply bg-white text-gray-950 p-3 rounded-xl min-h-32 max-h-80 sm:text-2xl;
+    overflow-y: auto;
+  }
+
+  .commentInputBtn {
+    @apply col-span-1 bg-white p-3 rounded-lg efectOfTransition hover:bg-green-500 hover:shadow-md hover:text-white;
+  }
+  
+  .commentInput {
+    @apply row-span-1 col-span-3 p-3 rounded-lg w-full;
+    word-break: break-all;
+  }
+
+  .commentInput::placeholder {
+    @apply text-center;
   }
 
 }

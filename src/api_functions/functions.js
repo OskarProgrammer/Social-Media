@@ -35,7 +35,7 @@ export const getCommentsFromPost = async ( postID ) => {
     // getting comments from post
     let result = comments.filter( e => e.postID == postID)
 
-    return result
+    return result.reverse()
 }
 
 export const getCommentsOfUser = async ( userID ) => {
