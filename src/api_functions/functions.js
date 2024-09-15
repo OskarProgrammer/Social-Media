@@ -37,3 +37,14 @@ export const getCommentsFromPost = async ( postID ) => {
 
     return result
 }
+
+export const getCommentsOfUser = async ( userID ) => {
+    
+    // getting all comments
+    const comments = await axios.get("http://localhost:3000/comments/").then((res)=>{ return res.data })
+
+    // getting comments of user
+    let result = comments.filter( e => e.ownerID == userID)
+
+    return result
+}

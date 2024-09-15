@@ -99,7 +99,7 @@ export const PostDetailsTab =  ({ postID }) => {
                         <p className="text-gray-500">{postInfo?.likes.length}</p>
                     </button>
 
-                    <button className={`btn border-0 shadow-none ${isExpanded ? "active" : "notActive"}`} onClick={()=>{setIsExpanded(!isExpanded)}}>
+                    <button className={`btn border-0  shadow-none ${isExpanded ? "active" : "notActive"}`} onClick={()=>{setIsExpanded(!isExpanded)}}>
                         <i className="bi bi-chat-fill"/>
                         <p className="text-gray-500">Comments {comments?.length}</p>
                     </button>

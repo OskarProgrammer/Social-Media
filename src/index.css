@@ -23,7 +23,7 @@
   .card {
     @apply p-3 shadow-2xl text-center rounded-lg efectOfTransition bg-gray-950;
     @apply flex flex-col;
-    @apply hover:text-white hover:bg-blue-500 hover:cursor-pointer hover:shadow-blue-500;
+    @apply hover:text-white ;
   }
   
   .content {
@@ -45,15 +45,15 @@
   }
 
   .form {
-    @apply lg:sm:w-5/12 sm:w-8/12 w-full rounded-3xl p-5 flex flex-col gap-4 justify-center shadow-2xl;
+    @apply lg:sm:w-5/12 sm:w-8/12 w-full rounded-3xl p-5 flex flex-col gap-4 justify-center shadow-2xl text-gray-950;
   }
 
   .inputField {
-    @apply p-3 text-center lg:sm:w-6/12 sm:w-8/12 mx-auto border-b-4 border-b-blue-500 efectOfTransition;
+    @apply p-3 text-center lg:sm:w-6/12 sm:w-8/12 mx-auto border-b-4 border-b-gray-950 efectOfTransition;
   }
 
   .inputField:hover{
-    @apply bg-blue-500 rounded-tl-lg rounded-tr-lg text-white;
+    @apply bg-gray-950 rounded-tl-lg rounded-tr-lg text-white;
   }
 
   .inputField:focus{
@@ -61,7 +61,7 @@
   }
 
   .inputField::placeholder{
-    @apply text-blue-500
+    @apply text-gray-950
   }
 
   .inputField::placeholder:hover{
@@ -74,13 +74,13 @@
 
   .userTab {
     @apply lg:sm:w-6/12 w-10/12 shadow-xl p-5 text-center flex flex-col gap-8;
-    @apply lg:sm:h-96 grid lg:sm:grid-cols-2 grid-rows-3;
+    @apply lg:sm:h-96 grid lg:sm:grid-cols-2 grid-rows-3 text-gray-950;
   }
 
   .postTab {
     @apply border border-8 p-3 m-2 rounded-lg border-white;
     @apply efectOfTransition;
-    @apply hover:border-white hover:bg-white hover:text-blue-500 hover:shadow-white hover:shadow-md;
+    @apply hover:border-white hover:bg-white hover:text-gray-950 hover:shadow-white hover:shadow-md;
     scroll-snap-align: center;
   }
 
@@ -130,7 +130,7 @@
   }
 
   .iconsBar > button > i {
-    @apply text-6xl;
+    @apply text-6xl text-white;
   }
 
   .iconsBar > button {
@@ -190,7 +190,7 @@
 
   .btn {
     @apply lg:sm:w-40 w-40 m-3 rounded-lg p-5 font-bold text-lg efectOfTransition;
-    @apply border-4 text-center shadow-inner;
+    @apply border-4 text-center shadow-inner text-gray-950;
   }
 
   .btn > i {
@@ -202,11 +202,11 @@
   }
 
   .btn-blue {
-    @apply btn bg-white text-blue-500;
+    @apply btn bg-white;
   }
 
   .btn-blue:hover {
-    @apply bg-blue-500 text-white shadow-blue-500 border-blue-500;
+    @apply bg-gray-950 text-white shadow-gray-950 border-gray-950;
   }
 
   .btn-red {
@@ -224,7 +224,17 @@
   }
 
   .btn-green:hover {
-    @apply bg-green-600 text-white shadow-green-600 border-green-600;
+    @apply bg-green-600 text-white shadow-sm shadow-green-600 border-green-600;
+  }
+
+  .commentsContainer {
+    @apply mt-5 w-10/12 mx-auto flex flex-col gap-3 px-3;
+    height: 9rem;
+    overflow-y: auto;
+  }
+
+  .commentCard {
+    @apply bg-white text-gray-950 p-3 rounded-xl
   }
 
 }

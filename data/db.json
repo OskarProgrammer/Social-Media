@@ -25,7 +25,9 @@
       "title": "test",
       "desc": "test",
       "img": "121",
-      "likes": [],
+      "likes": [
+        "22"
+      ],
       "ownerID": "22"
     },
     {
@@ -33,7 +35,9 @@
       "title": "tes",
       "desc": "ts",
       "img": "te",
-      "likes": [],
+      "likes": [
+        "22"
+      ],
       "ownerID": "22"
     }
   ],
@@ -43,6 +47,12 @@
       "ownerID": "22",
       "postID": "efbe19ea-4005-4811-8fed-5371721df970",
       "comment": "Hej"
+    },
+    {
+      "id": "2",
+      "ownerID": "22",
+      "postID": "efbe19ea-4005-4811-8fed-5371721df970",
+      "comment": "sss"
     }
   ]
 }
