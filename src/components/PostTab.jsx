@@ -31,20 +31,20 @@ export const PostTab = ( { postInfo } ) => {
         <>
             {loading ? <p>Loading...</p>
                      : 
-                     <div className="postTab">
+                     <NavLink to={`/post/${postInfo.id}`} className="postTab">
 
                         <p>{postInfo.title}</p>
                         
-                        <NavLink to={`/post/${postInfo.id}`} className="flex flex-row gap-5 justify-center">
+                        <div className="flex flex-row gap-5 justify-center">
                             <p>
                                 <i className="bi bi-hand-thumbs-up-fill"/> {postInfo.likes.length}
                             </p>
                             <p>
                                 <i className="bi bi-chat-fill"/> {comments.length}
                             </p>
-                        </NavLink >
+                        </div >
 
-                    </div>
+                    </NavLink>
             }
         </>
     )

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 // importing api functions
-import { getCurrentUserInfo, getPostsOfUser } from "../api_functions/functions"
+import { getPostsOfUser } from "../api_functions/functions"
 import { PostTab } from "./PostTab"
 
 
@@ -51,7 +51,7 @@ export const PostsInfoTab = ( {currentUser}) => {
                     <i className="bi bi-plus"/>
                 </NavLink>
 
-                <NavLink to="/account/userInfo" className="btn-green mx-auto" >
+                <NavLink to={`/posts/${currentUser.id}`} className="btn-green mx-auto" >
                     See your posts
                 </NavLink>
             </div>

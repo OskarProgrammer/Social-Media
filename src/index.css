@@ -90,7 +90,7 @@
 
   .postDetails {
     @apply lg:sm:w-4/12 w-10/12 shadow-2xl rounded-xl text-center bg-gray-950 text-white shadow-gray-950;
-    @apply font-bold text-4xl flex flex-col gap-3 p-5;
+    @apply font-bold text-4xl flex flex-col gap-3 p-5 mx-auto;
   }
 
   .image {
@@ -110,7 +110,8 @@
   }
 
   .informations {
-    @apply row-span-2 col-span-3 flex flex-col ms-2 p-4 font-extrabold text-white bg-white rounded shadow-md shadow-white;
+    @apply row-span-2 col-span-3 flex flex-col ms-2 p-4 font-extrabold text-gray-950 
+    bg-white rounded;
   }
 
   .title {
@@ -135,19 +136,19 @@
   }
 
   .liked {
-    @apply text-green-500 hover:text-red-700
+    @apply text-green-500
   }
 
   .disLiked {
-    @apply text-gray-400 hover:text-green-500
+    @apply text-gray-400
   }
 
   .active {
-    @apply text-blue-500 hover:text-gray-400
+    @apply text-blue-500
   }
 
   .notActive {
-    @apply text-gray-400 hover:text-blue-500
+    @apply text-gray-400
   }
 
   .commentsSection {

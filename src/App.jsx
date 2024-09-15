@@ -18,6 +18,7 @@ import { accountMainLoader, AccountMainPage } from './pages/AccountMainPage'
 import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
 import { createPostAction, NewPostPage } from './pages/NewPostPage'
 import { PostDetailsPage } from './pages/PostDetailsPage'
+import { UserPostsPage } from './pages/UserPostsPage'
 
 
 // creating router
@@ -34,6 +35,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 
     {/* post details page */}
     <Route path="post/:postID" element={<PostDetailsPage/>}/>
+
+    {/* posts of user page */}
+    <Route path="posts/:userID" element={<UserPostsPage/>}/>
 
     {/* account page */}
     <Route path="account/" element={<AccountLayout/>}>
