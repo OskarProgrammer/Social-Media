@@ -251,4 +251,8 @@
     @apply text-center;
   }
 
+  .dateOfCreation {
+    @apply text-xl text-start ms-1;
+  }
+
 }

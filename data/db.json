@@ -21,32 +21,14 @@
   ],
   "posts": [
     {
-      "id": "efbe19ea-4005-4811-8fed-5371721df970",
-      "title": "test",
-      "desc": "test",
-      "img": "121",
-      "likes": [
-        "22"
-      ],
-      "ownerID": "22"
-    },
-    {
-      "id": "b00e4e95-c71c-460b-ba57-3c03f47a335d",
-      "title": "tes",
-      "desc": "ts",
-      "img": "te",
-      "likes": [
-        "22"
-      ],
-      "ownerID": "22"
+      "id": "f4007755-23dd-4643-b975-72bd31db7e9e",
+      "title": "nowy post",
+      "desc": "sdsds",
+      "img": "sss",
+      "likes": [],
+      "ownerID": "22",
+      "createdAt": "2024-09-16T11:27:14.871Z"
     }
   ],
-  "comments": [
-    {
-      "id": "15338917-280b-4df2-bac5-1db1ea3c818e",
-      "ownerID": "22",
-      "postID": "efbe19ea-4005-4811-8fed-5371721df970",
-      "comment": "hej"
-    }
-  ]
+  "comments": []
 }

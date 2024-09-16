@@ -9,6 +9,10 @@ import { getCommentsFromPost, getCurrentUserInfo } from "../api_functions/functi
 // importing components
 import { CommentTab } from "./CommentTab"
 
+// importing date functions
+import { getHoursDiff, getSecondsDiff, getMinutesDiff } from "../date_functions/date_functions"
+
+
 const useData = ( postID ) => {
 
     let [postInfo, setPostInfo] = useState()
@@ -56,6 +60,8 @@ export const PostDetailsTab =  ({ postID }) => {
     let [postInfo, setPostInfo] = useState(postInfoLoader)
     let [commentsInfo, setCommentsInfo] = useState(commentsLoader)
 
+    let [currentDate, setCurrentDate] = useState(new Date())
+
 
     // useEffect 
     useEffect(()=>{
@@ -70,6 +76,18 @@ export const PostDetailsTab =  ({ postID }) => {
 
         },100)
 
+
+        return () => { clearInterval(interval) }
+    })
+
+    // useEffect to update current date
+    useEffect(()=>{
+        const interval = setInterval( async () => {
+
+            currentDate = new Date()
+            setCurrentDate(currentDate)
+
+        }, 1000)
 
         return () => { clearInterval(interval) }
     })
@@ -104,10 +122,37 @@ export const PostDetailsTab =  ({ postID }) => {
         setComment("")
     }
 
-    
+    const diff = () =>{
+        // creating format
+        const responseFormat = ( text ) =>{
+            return "Sent " + text + " ago"
+        }
+
+        // creating current date
+        const currentDate = new Date()
+
+        // getting diff between current date and date of creating the postInfo
+        const secondsDiff = getSecondsDiff(currentDate, new Date(postInfo?.createdAt))
+        const minutesDiff = getMinutesDiff(currentDate, new Date(postInfo?.createdAt))
+        const hoursDiff = getHoursDiff(currentDate, new Date(postInfo?.createdAt))
+        
+        if ( secondsDiff > 60 ){
+            if ( minutesDiff > 60) {
+                return responseFormat(`${hoursDiff} hours`)
+            }else{
+                return responseFormat(`${minutesDiff} minutes`)
+            }
+        } else {
+            return responseFormat(`${secondsDiff} seconds`)
+        }
+    }
 
     return (
         <div className="postDetails">
+
+                <div className="dateOfCreation">
+                    {diff()}
+                </div>
 
                 <div className="image">
                     <p>s</p>

@@ -59,7 +59,8 @@ export const createPostAction = async ( { request } ) => {
         desc : desc,
         img : img,
         likes : [],
-        ownerID : currentUser.id 
+        ownerID : currentUser.id,
+        createdAt : new Date()
     } 
 
     // creating new post
