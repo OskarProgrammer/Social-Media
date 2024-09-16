@@ -5,6 +5,9 @@ import { useEffect, useState } from "react"
 // importing api functions
 import { getLikesOfUser } from "../api_functions/functions"
 
+// importing components
+import { LikeTab } from "./LikeTab"
+
 
 
 const useLikes = ( userID ) => {
@@ -31,7 +34,13 @@ export const LikesInfoTab = ( {currentUser} ) => {
         <div className="card col-span-full lg:sm:col-span-2 lg:sm:row-span-3 lg:sm:col-start-1 lg:sm:row-start-5">
             <div className="content lg:sm:text-4xl text-3xl">
                 <p>Likes</p>
-                <p>{likes?.length}</p>
+                
+                <div className="listOfLikes mt-3">
+                    {likes?.map((like)=>(
+                        <LikeTab likeInfo={like}/>
+                    ))}
+                </div>
+
             </div>
         </div>
     )

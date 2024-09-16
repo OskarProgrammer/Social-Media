@@ -260,4 +260,17 @@
     overflow-y: auto;
   }
 
+  .listOfLikes {
+    @apply grid gap-5 grid-cols-3 h-56 p-4;
+    overflow-y:auto;
+  }
+
+  .likeCard {
+    @apply bg-white text-gray-950 rounded-lg text-lg h-24 flex flex-col
+  }
+  
+  .likeCard > p {
+    @apply my-auto
+  }
+
 }

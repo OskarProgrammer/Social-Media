@@ -25,7 +25,9 @@
       "title": "s",
       "desc": "s",
       "img": "s",
-      "likes": [],
+      "likes": [
+        "22"
+      ],
       "ownerID": "22",
       "createdAt": "2024-09-16T18:39:05.240Z"
     }
