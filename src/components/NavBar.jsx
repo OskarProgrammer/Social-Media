@@ -44,12 +44,12 @@ export const NavBar = ( props ) => {
 
                 { !currentUser.isLogged ? 
                     <>
-                        <NavLink to="/login" className="btn-blue">
-                            Sign in
+                        <NavLink to="/login" className="btn-blue flex flex-col">
+                            <p className="my-auto">Sign in</p>
                         </NavLink>
 
-                        <NavLink to="/register" className="btn-blue">
-                            Sign up
+                        <NavLink to="/register" className="btn-blue flex flex-col">
+                        <p className="my-auto">Sign up</p>
                         </NavLink>
                     </> 
                     : 

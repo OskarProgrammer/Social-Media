@@ -1,7 +1,7 @@
 {
   "currentUser": {
-    "id": "22",
-    "isLogged": true
+    "id": "",
+    "isLogged": false
   },
   "users": [
     {
@@ -25,9 +25,7 @@
       "title": "s",
       "desc": "s",
       "img": "s",
-      "likes": [
-        "22"
-      ],
+      "likes": [],
       "ownerID": "22",
       "createdAt": "2024-09-16T18:39:05.240Z"
     }
