@@ -22,27 +22,31 @@ const useData = ( postID ) => {
 
 
     useEffect(()=>{
-        const fetchData = async () => {
+        const timeout = setTimeout(async () => {
+
             // getting postInfo
-            postInfo = await axios.get(`http://localhost:3000/posts/${postID}`).then( (res) => {return res.data} )
+            postInfo = await axios.get(`http://localhost:3000/posts/${postID}`).then( (res) => { return res.data } )
+                                                                               .catch( () => { throw new Error("Error during postInfo fetch")} )
             setPostInfo(postInfo)
     
             // getting author info
-            authorInfo = await axios.get(`http://localhost:3000/users/${postInfo.ownerID}`).then((res)=>{return res.data})
+            authorInfo = await axios.get(`http://localhost:3000/users/${postInfo.ownerID}`).then((res)=>{ return res.data })
+                                                                                           .catch( () => { throw new Error("Error during authorInfo fetch")})
             setAuthorInfo(authorInfo)
     
             // getting currentUser
-            currentUser = await getCurrentUserInfo().catch( () => { return undefined } )
+            currentUser = await getCurrentUserInfo().catch( () => { throw new Error("Error during currentUser fetch") } )
             setCurrentUser(currentUser)
     
             // getting comments 
-            comments = await getCommentsFromPost(postID).catch(()=>{ return undefined })
+            comments = await getCommentsFromPost(postID).catch(()=>{ throw new Error("Error during comments fetch") })
             setComments(comments)
             
-        }
+        }, 100)
 
-        return () => { fetchData() }
+        return () => { clearTimeout(timeout) }
     },[])
+
 
     return [postInfo,
         authorInfo,
@@ -57,18 +61,12 @@ export const PostDetailsTab =  ({ postID }) => {
     let [comment, setComment] = useState("")
 
     let [postInfoLoader, authorInfo, currentUser, commentsLoader] = useData( postID )
-    let [postInfo, setPostInfo] = useState(postInfoLoader)
     let [commentsInfo, setCommentsInfo] = useState(commentsLoader)
-
-    let [currentDate, setCurrentDate] = useState(new Date())
 
 
     // useEffect 
     useEffect(()=>{
         const interval = setInterval( async () => {
-
-            postInfo  = await axios.get(`http://localhost:3000/posts/${postInfoLoader.id}`).then((res)=>{ return res.data })
-            setPostInfo(postInfo)
 
             // getting comments 
             commentsInfo = await getCommentsFromPost(postID).catch(()=>{ return undefined })
@@ -80,39 +78,31 @@ export const PostDetailsTab =  ({ postID }) => {
         return () => { clearInterval(interval) }
     })
 
-    // useEffect to update current date
-    useEffect(()=>{
-        const interval = setInterval( async () => {
-
-            currentDate = new Date()
-            setCurrentDate(currentDate)
-
-        }, 1000)
-
-        return () => { clearInterval(interval) }
-    })
 
     const like = async () => {
-        if ( postInfo.likes.includes(currentUser.id) ) {
-            postInfo.likes = postInfo.likes.filter( e => e != currentUser.id)
+        if ( postInfoLoader.likes.includes(currentUser.id) ) {
+            postInfoLoader.likes = postInfoLoader.likes.filter( e => e != currentUser.id)
         } else {
-            postInfo.likes.push(currentUser.id)
+            postInfoLoader.likes.push(currentUser.id)
         }
         
         try {
-            await axios.put(`http://localhost:3000/posts/${postInfo.id}`, postInfo)
+            await axios.put(`http://localhost:3000/posts/${postInfoLoader.id}`, postInfoLoader)
         } catch { throw new Error("Something went wrong")}
 
     }
 
     const createComment = async () => {
 
+        if (comment.length == 0) { return }
+
         // creating newComment object
         const newComment = {
             id : crypto.randomUUID(),
             ownerID: currentUser.id,
-            postID: postInfo.id,
-            comment: comment
+            postID: postInfoLoader.id,
+            comment: comment,
+            createdAt : new Date()
         }
 
         try {
@@ -125,16 +115,16 @@ export const PostDetailsTab =  ({ postID }) => {
     const diff = () =>{
         // creating format
         const responseFormat = ( text ) =>{
-            return "Sent " + text + " ago"
+            return "Posted " + text + " ago"
         }
 
         // creating current date
         const currentDate = new Date()
 
-        // getting diff between current date and date of creating the postInfo
-        const secondsDiff = getSecondsDiff(currentDate, new Date(postInfo?.createdAt))
-        const minutesDiff = getMinutesDiff(currentDate, new Date(postInfo?.createdAt))
-        const hoursDiff = getHoursDiff(currentDate, new Date(postInfo?.createdAt))
+        // getting diff between current date and date of creating the postInfoLoader
+        const secondsDiff = getSecondsDiff(currentDate, new Date(postInfoLoader?.createdAt))
+        const minutesDiff = getMinutesDiff(currentDate, new Date(postInfoLoader?.createdAt))
+        const hoursDiff = getHoursDiff(currentDate, new Date(postInfoLoader?.createdAt))
         
         if ( secondsDiff > 60 ){
             if ( minutesDiff > 60) {
@@ -166,9 +156,9 @@ export const PostDetailsTab =  ({ postID }) => {
                     </div>
 
                     <div className="informations">
-                        <p className="title text-2xl">{postInfo?.title}</p>
+                        <p className="title text-2xl">{postInfoLoader?.title}</p>
                         <div className="descTab text-lg">
-                            {postInfo?.desc}
+                            {postInfoLoader?.desc}
                         </div>
                     </div>
 
@@ -176,9 +166,9 @@ export const PostDetailsTab =  ({ postID }) => {
 
                 <div className="iconsBar">
 
-                    <button className={`btn border-0 shadow-none ${postInfo?.likes.includes(currentUser?.id) ? "liked" : "disLiked"}`} onClick={()=>{ like() }}>
+                    <button className={`btn border-0 shadow-none ${postInfoLoader?.likes.includes(currentUser?.id) ? "liked" : "disLiked"}`} onClick={()=>{ like() }}>
                         <i className="bi bi-hand-thumbs-up-fill"/>
-                        <p className="text-gray-500">{postInfo?.likes.length}</p>
+                        <p className="text-gray-500">{postInfoLoader?.likes.length}</p>
                     </button>
 
                     <button className={`btn border-0  shadow-none ${isExpanded ? "active" : "notActive"}`} onClick={()=>{setIsExpanded(!isExpanded)}}>
@@ -199,11 +189,14 @@ export const PostDetailsTab =  ({ postID }) => {
                                                 onChange={(e)=>{setComment(e.target.value)}}/>
 
                                         <button className="commentInputBtn"
-                                                onClick={()=>{ createComment() }}>Send</button>
+                                                onClick={()=>{ createComment() }}>Send
+                                        </button>
                                     </div>
-                                    {commentsInfo?.map((comment)=>(
-                                        <CommentTab commentInfo={comment} />
-                                    ))}
+                                    <div className="comments">
+                                        {commentsInfo?.map((comment)=>(
+                                            <CommentTab commentInfo={comment} />
+                                        ))}
+                                    </div>
                                 </div> 
                             : ""}
 

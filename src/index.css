@@ -158,8 +158,8 @@
   }
 
   .commentTab {
-    @apply p-5 shadow-lg shadow-gray-600 rounded-xl bg-white text-gray-950;
-    @apply grid grid-cols-4 grid-rows-2
+    @apply p-5 shadow-lg shadow-gray-600 rounded-xl bg-white text-gray-950 mx-5;
+    @apply grid grid-cols-4 grid-rows-2;
   }
 
   .comment {
@@ -253,6 +253,11 @@
 
   .dateOfCreation {
     @apply text-xl text-start ms-1;
+  }
+
+  .comments {
+    @apply flex flex-col gap-3 h-80 mx-5;
+    overflow-y: auto;
   }
 
 }

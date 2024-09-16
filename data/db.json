@@ -21,14 +21,43 @@
   ],
   "posts": [
     {
-      "id": "f4007755-23dd-4643-b975-72bd31db7e9e",
-      "title": "nowy post",
-      "desc": "sdsds",
-      "img": "sss",
+      "id": "1b7059af-4b85-492a-99d8-ebfeb566a642",
+      "title": "s",
+      "desc": "s",
+      "img": "s",
       "likes": [],
       "ownerID": "22",
-      "createdAt": "2024-09-16T11:27:14.871Z"
+      "createdAt": "2024-09-16T18:39:05.240Z"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "id": "7b7e849a-a2ac-408d-9100-5ea4150e3d22",
+      "ownerID": "22",
+      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
+      "comment": "s",
+      "createdAt": "2024-09-16T18:47:40.109Z"
+    },
+    {
+      "id": "b56492e9-5f6b-47ff-a444-eeeeb446d4e1",
+      "ownerID": "22",
+      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
+      "comment": "s",
+      "createdAt": "2024-09-16T18:49:05.369Z"
+    },
+    {
+      "id": "54abfd30-fa4b-483b-aa01-42c7a3859fdd",
+      "ownerID": "22",
+      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
+      "comment": "s",
+      "createdAt": "2024-09-16T18:51:09.931Z"
+    },
+    {
+      "id": "5654dc50-e52c-4b5e-bb38-a4daf63dc7df",
+      "ownerID": "22",
+      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
+      "comment": "s",
+      "createdAt": "2024-09-16T18:51:41.285Z"
+    }
+  ]
 }
