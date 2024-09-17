@@ -10,6 +10,8 @@ export const getCurrentUserInfo = async () => {
                                                                              .catch((error)=>{return error})
     } catch { throw new Error("Error during getting current user")}
 
+    if (currentUser.id == "") { return undefined }
+
     try {
         currentUser = await axios.get(`http://localhost:3000/users/${currentUser.id}`).then((response) => {return response.data})
                                                                                       .catch((error) => {return error})

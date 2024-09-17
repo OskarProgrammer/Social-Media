@@ -58,10 +58,6 @@ export const PostDetailsTab =  ({ postID }) => {
         refetchInterval: 1000
     })
 
-    if (isLoading) {
-        return <div>Loading...</div>
-    }
-
     const { data : currentUser, isLoading : currentUserLoading} = useQuery(
         {
             queryFn: () => getCurrentUserInfo(),
@@ -128,7 +124,6 @@ export const PostDetailsTab =  ({ postID }) => {
         }
     }
 
-
     return (
         <div className="postDetails">
 
@@ -171,8 +166,6 @@ export const PostDetailsTab =  ({ postID }) => {
                         </button>
                      </> : ""}
 
-                    {currentUser === undefined ? <p className="text-gray-500">Comments {comments?.length}</p> : ""}
-
                 </div>
 
                 {isExpanded 
@@ -180,19 +173,22 @@ export const PostDetailsTab =  ({ postID }) => {
                                     <p>Comment Section</p>
                                     <div className="grid grid-cols-4 grid-rows-1 gap-3 text-gray-950">
 
-                                        <input  type="text" 
+                                        {currentUser != undefined ? 
+                                         <>
+                                            <input  type="text" 
                                                 className="commentInput" 
                                                 placeholder={`You are commenting as ${currentUser?.login}`}
                                                 onChange={(e)=>{setComment(e.target.value)}}/>
 
-                                        <button className="commentInputBtn"
-                                                onClick={()=>{createComment()}}>Send
-                                        </button>
+                                            <button className="commentInputBtn"
+                                                    onClick={()=>{createComment()}}>Send
+                                            </button>
+                                         </> : ""}
 
                                     </div>
                                     <div className="comments">
                                         {comments?.map((comment)=>(
-                                            <CommentTab commentInfo={comment} />
+                                            <CommentTab key={comment.id} commentInfo={comment} />
                                         ))}
                                     </div>
                                 </div> 
