@@ -1,7 +1,7 @@
 {
   "currentUser": {
-    "id": "",
-    "isLogged": false
+    "id": "c66d10ff-87f2-4639-a580-a458e12cf42d",
+    "isLogged": true
   },
   "users": [
     {
@@ -21,36 +21,16 @@
   ],
   "posts": [
     {
-      "id": "1b7059af-4b85-492a-99d8-ebfeb566a642",
-      "title": "s",
-      "desc": "s",
-      "img": "s",
-      "likes": [],
-      "ownerID": "22",
-      "createdAt": "2024-09-16T18:39:05.240Z"
+      "id": "cea92234-b01f-4c3c-a8ce-b35cd3ed4fd5",
+      "title": "to moj post",
+      "desc": "ss",
+      "img": "sss",
+      "likes": [
+        "c66d10ff-87f2-4639-a580-a458e12cf42d"
+      ],
+      "ownerID": "c66d10ff-87f2-4639-a580-a458e12cf42d",
+      "createdAt": "2024-09-17T20:03:05.070Z"
     }
   ],
-  "comments": [
-    {
-      "id": "bd3a1a0b-c807-4df2-8cd7-8237d5cedeb0",
-      "ownerID": "22",
-      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
-      "comment": "s",
-      "createdAt": "2024-09-17T12:45:19.902Z"
-    },
-    {
-      "id": "ce8d2f33-d320-4190-8b06-0ae9c58dcbc0",
-      "ownerID": "22",
-      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
-      "comment": "s",
-      "createdAt": "2024-09-17T12:45:23.996Z"
-    },
-    {
-      "id": "c0f1b39d-6b60-4483-9dea-e625c3f3812d",
-      "ownerID": "22",
-      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
-      "comment": "ss",
-      "createdAt": "2024-09-17T17:02:31.595Z"
-    }
-  ]
+  "comments": []
 }

@@ -21,6 +21,7 @@ import { createPostAction, NewPostPage } from './pages/NewPostPage'
 import { PostDetailsPage } from './pages/PostDetailsPage'
 import { UserPostsPage } from './pages/UserPostsPage'
 import { ErrorPage } from './pages/ErrorPage'
+import { UserDetailsPage } from './pages/UserDetailsPage'
 
 
 // creating router
@@ -37,6 +38,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 
     {/* post details page */}
     <Route path="post/:postID" element={<PostDetailsPage/>}/>
+
+    {/* user details page */}
+    <Route path="user/:userID" element={<UserDetailsPage/>} />
 
     {/* posts of user page */}
     <Route path="posts/:userID" element={<UserPostsPage/>}/>

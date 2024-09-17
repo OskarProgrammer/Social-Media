@@ -227,6 +227,14 @@
     @apply bg-green-600 text-white shadow-sm shadow-green-600 border-green-600;
   }
 
+  .btn-blue-light {
+    @apply btn text-blue-500 border-blue-500;
+  }
+
+  .btn-blue-light:hover {
+    @apply bg-blue-500 text-white shadow-sm shadow-blue-500;
+  }
+
   .commentsContainer {
     @apply mt-5 w-10/12 mx-auto flex flex-col gap-3 px-3;
     height: 9rem;
@@ -279,6 +287,39 @@
 
   .container {
     @apply my-auto mx-auto text-center text-5xl text-white font-bold flex flex-col gap-5
+  }
+
+  .profileImage {
+    @apply border-4 border-slate-950 shadow-lg shadow-slate-950 h-40 w-40 mx-auto rounded-full
+  }
+
+  .profileTitle {
+    @apply text-slate-950 text-3xl drop-shadow-lg -z-10
+  }
+
+  .numbersTab {
+    @apply flex lg:sm:flex-row flex-col lg:sm:gap-10 gap-2 justify-center
+  }
+
+  .postsContainer {
+    @apply flex flex-col gap-4
+  }
+
+  .postsContainer > hr {
+    @apply border-2 border-slate-950 rounded-full w-10/12 mx-auto
+  }
+
+  .postsTitle {
+    @apply text-3xl font-bold;
+  }
+
+  .profilePostsList {
+    @apply grid lg:sm:grid-cols-3 sm:grid-cols-3 grid-cols-2 gap-3 p-5 w-10/12 mx-auto
+  }
+
+  .post {
+    @apply p-5 border-2 border-slate-950 min-h-36 max-h-52 rounded-3xl efectOfTransition;
+    @apply hover:bg-slate-950 hover:text-white hover:shadow-lg hover:shadow-slate-950;
   }
 
 }

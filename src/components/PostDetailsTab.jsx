@@ -12,6 +12,7 @@ import { CommentTab } from "./CommentTab"
 
 // importing date functions
 import { getHoursDiff, getSecondsDiff, getMinutesDiff } from "../date_functions/date_functions"
+import { NavLink } from "react-router-dom"
 
 
 const useData = ( postID ) => {
@@ -51,11 +52,10 @@ export const PostDetailsTab =  ({ postID }) => {
 
     
 
-    const { data : comments, isLoading} = useQuery({
+    const { data : comments, isLoading, refetch : refreshComments} = useQuery({
         queryFn: () => getCommentsFromPost(postID),
         queryKey: ["comments"],
         refetchOnWindowFocus: true,
-        refetchInterval: 1000
     })
 
     const { data : currentUser, isLoading : currentUserLoading} = useQuery(
@@ -83,7 +83,8 @@ export const PostDetailsTab =  ({ postID }) => {
         try {
             await axios.post(`http://localhost:3000/comments/`, newComment)
         } catch { throw new Error("Error during creating new comment") }
-    
+        
+        refreshComments()
     }
 
     const like = async () => {
@@ -137,10 +138,10 @@ export const PostDetailsTab =  ({ postID }) => {
 
                 <div className="infoBar">
 
-                    <div className="authorImage">
+                    <NavLink to={`/user/${authorInfo?.id}`} className="authorImage text-white">
                         <i className="bi bi-person-circle"/>
                         <p>{authorInfo?.login}</p>
-                    </div>
+                    </NavLink>
 
                     <div className="informations">
                         <p className="title text-2xl">{postInfoLoader?.title}</p>

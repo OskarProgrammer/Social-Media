@@ -74,3 +74,11 @@ export const getPosts = async ( filter = "" ) => {
         return result
     }
 }
+
+export const getUserById = async ( userID ) => {
+    // getting user
+    const user = await axios.get(`http://localhost:3000/users/${userID}`).then( res => res.data)
+                                                                         .catch(e => e)
+
+    return user
+}
