@@ -1,6 +1,7 @@
 
 // importing functions and components from react library
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 // importing css
 import './App.css'
@@ -19,11 +20,12 @@ import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
 import { createPostAction, NewPostPage } from './pages/NewPostPage'
 import { PostDetailsPage } from './pages/PostDetailsPage'
 import { UserPostsPage } from './pages/UserPostsPage'
+import { ErrorPage } from './pages/ErrorPage'
 
 
 // creating router
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<MainLayout/>} loader={mainLoader}>
+  <Route path="/" element={<MainLayout/>} loader={mainLoader} errorElement={<ErrorPage/>}>
     {/* main page */}
     <Route index element={<MainPage/>}/>
 
@@ -60,12 +62,14 @@ const router = createBrowserRouter(createRoutesFromElements(
   </Route>
 ))
 
+const queryClient = new QueryClient()
+
 function App() {
 
   return (
-    <>
-      <RouterProvider router={router}/>
-    </>
+    <QueryClientProvider client={queryClient}> 
+        <RouterProvider router={router}/>
+    </QueryClientProvider>
   )
 }
 

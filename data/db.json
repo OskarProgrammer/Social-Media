@@ -32,32 +32,18 @@
   ],
   "comments": [
     {
-      "id": "7b7e849a-a2ac-408d-9100-5ea4150e3d22",
+      "id": "bd3a1a0b-c807-4df2-8cd7-8237d5cedeb0",
       "ownerID": "22",
       "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
       "comment": "s",
-      "createdAt": "2024-09-16T18:47:40.109Z"
+      "createdAt": "2024-09-17T12:45:19.902Z"
     },
     {
-      "id": "b56492e9-5f6b-47ff-a444-eeeeb446d4e1",
+      "id": "ce8d2f33-d320-4190-8b06-0ae9c58dcbc0",
       "ownerID": "22",
       "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
       "comment": "s",
-      "createdAt": "2024-09-16T18:49:05.369Z"
-    },
-    {
-      "id": "54abfd30-fa4b-483b-aa01-42c7a3859fdd",
-      "ownerID": "22",
-      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
-      "comment": "s",
-      "createdAt": "2024-09-16T18:51:09.931Z"
-    },
-    {
-      "id": "5654dc50-e52c-4b5e-bb38-a4daf63dc7df",
-      "ownerID": "22",
-      "postID": "1b7059af-4b85-492a-99d8-ebfeb566a642",
-      "comment": "s",
-      "createdAt": "2024-09-16T18:51:41.285Z"
+      "createdAt": "2024-09-17T12:45:23.996Z"
     }
   ]
 }

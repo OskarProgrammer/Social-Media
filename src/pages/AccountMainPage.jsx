@@ -69,5 +69,9 @@ export const accountMainLoader = async () => {
 
     let currentUser = await getCurrentUserInfo()
 
+    if (currentUser.length > 1) {
+        throw new Error("You havent got access to this account")
+    }
+
     return currentUser
 }

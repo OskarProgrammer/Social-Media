@@ -8,7 +8,9 @@ export const getCurrentUserInfo = async () => {
     try{
         currentUser = await axios.get("http://localhost:3000/currentUser/").then((response)=>{return response.data})
                                                                              .catch((error)=>{return error})
+    } catch { throw new Error("Error during getting current user")}
 
+    try {
         currentUser = await axios.get(`http://localhost:3000/users/${currentUser.id}`).then((response) => {return response.data})
                                                                                       .catch((error) => {return error})
     } catch { throw new Error("Error during getting current user")}
@@ -58,4 +60,15 @@ export const getLikesOfUser = async ( userID ) => {
     let result = posts.filter( e => e.likes.includes(userID))
 
     return result
+}
+
+export const getPosts = async ( filter = "" ) => {
+    // getting all posts
+    const posts = await axios.get("http://localhost:3000/posts/").then((res)=>{ return res.data })
+
+    if (filter == "") { return posts}
+    else{
+        let result = posts.filter((e)=> e.ownerID == filter || e.title == filter) 
+        return result
+    }
 }
