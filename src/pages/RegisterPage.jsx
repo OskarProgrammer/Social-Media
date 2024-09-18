@@ -72,6 +72,8 @@ export const registerAction = async ( { request } ) => {
         password : password,
         followers : [],
         following : [],
+        messages : [],
+        readMessages : []
     }
 
     try {
