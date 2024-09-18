@@ -68,5 +68,34 @@ export const createPostAction = async ( { request } ) => {
         await axios.post("http://localhost:3000/posts/", newPostObject)
     } catch { return { error : "Something went wrong during creating post" } }
 
+    // creatint newMessageObject
+    const newMessageObject = {
+        id: crypto.randomUUID(),
+        ownerID: currentUser.id,
+        message: "New post from ",
+        postID: newPostObject.id,
+        createdAt: newPostObject.createdAt
+      }
+
+    // sending messages
+    currentUser.followers.map( async follower => {
+        await sendMessage(newMessageObject.id, follower)
+    })
+
+    try {
+        await axios.post(`http://localhost:3000/notifications/`, newMessageObject)
+    } catch { return { error : "Something went wrong during creating notification" } }
+
     return redirect("/account/")
+}
+
+export const sendMessage = async (newMessageID, followerID) => {
+    // getting user
+    let user = await axios.get(`http://localhost:3000/users/${followerID}`).then(res => res.data)
+
+    user.messages.push(newMessageID)
+
+    try {
+        await axios.put(`http://localhost:3000/users/${followerID}`, user)
+    } catch { throw new Error("Error during sending message") }
 }

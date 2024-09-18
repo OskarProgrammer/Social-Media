@@ -96,3 +96,20 @@ export const getMessages = async () => {
     
     return currentUser.readMessages
 }
+
+export const getNotification = async ( notifyID ) => {
+    // getting notification
+    const notification = await axios.get(`http://localhost:3000/notifications/${notifyID}`).then((res) => res.data)
+
+    return notification
+}
+
+export const getAuthorOfNotification = async ( notifyID ) => {
+    // getting notification
+    const notification = await axios.get(`http://localhost:3000/notifications/${notifyID}`).then((res) => res.data)
+
+    // getting authorInfo
+    const authorInfo = await axios.get(`http://localhost:3000/users/${notification.ownerID}`).then((res)=> res.data)
+
+    return authorInfo
+}

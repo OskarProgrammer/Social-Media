@@ -339,10 +339,23 @@
   }
 
   .messageContainer {
-    @apply text-slate-950 lg:sm:w-6/12 w-10/12 flex flex-col justify-center text-center
+    @apply text-slate-950 lg:sm:w-10/12 w-10/12 flex flex-col justify-center text-center
   }
 
   .titleOfMessages {
     @apply p-5 text-[40px] font-bold
   }
+
+  .messagesList {
+    @apply grid lg:sm:grid-cols-2 grid-cols-1 gap-10 p-3
+  }
+
+  .notificationItem {
+    @apply col-span-1 p-3 pt-5 shadow-2xl rounded-xl shadow-slate-950 flex flex-col gap-3
+  }
+  
+  .buttonsBar {
+    @apply flex flex-row gap-3 justify-center
+  }
+
 }

@@ -1,11 +1,14 @@
 
 // importing functions and components from react library
 import { useEffect } from "react"
+import { useQuery } from "react-query"
 
 // importing api functions
 import { getCurrentUserInfo, getMessages } from "../api_functions/functions"
 import axios from "axios"
-import { useQuery } from "react-query"
+
+// importing components
+import { NotificationItem } from "../components/NotificationItem"
 
 
 const useTransferMessages = () => {
@@ -34,14 +37,32 @@ export const MessagesPage = () => {
     const { data : messages, refetch : refreshMessages } = useQuery({
         queryFn : () => getMessages(),
         queryKey : ["messages"],
-        refetchInterval : 500,
+        refetchInterval : 200,
     })
+
+    const removeNoti = async (notifyID) => {
+        // getting current user
+        let currentUser = await getCurrentUserInfo()
+    
+        currentUser.readMessages = currentUser.readMessages.filter((e) => e != notifyID)
+
+        try {
+            await axios.put(`http://localhost:3000/users/${currentUser.id}`, currentUser)
+        } catch { throw new Error("Error during removing notification")}
+        
+    }
 
     return (
         <div className="messageContainer">
 
             <div className="titleOfMessages">
                 Notifications {messages?.length} 
+            </div>
+
+            <div className="messagesList">
+                {messages?.map( message => (
+                        <NotificationItem key={message} notifyID={message} onRemove={removeNoti}/>
+                ))}
             </div>
 
         </div>

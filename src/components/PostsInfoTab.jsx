@@ -37,12 +37,10 @@ export const PostsInfoTab = ( {currentUser}) => {
                     { loading 
                             ? <p>Loading...</p>
                             : posts.map( (post) => (
-                                <PostTab postInfo={post}/>
+                                <PostTab key={post.id} postInfo={post}/>
                             ))
                     }
                 </div>
-                
-
             </div>
 
 
