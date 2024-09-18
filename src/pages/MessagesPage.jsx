@@ -41,7 +41,7 @@ export const MessagesPage = () => {
         <div className="messageContainer">
 
             <div className="titleOfMessages">
-                Notifications {messages.length} 
+                Notifications {messages?.length} 
             </div>
 
         </div>
