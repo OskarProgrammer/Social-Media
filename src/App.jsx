@@ -15,7 +15,7 @@ import { loginAction, LoginPage } from './pages/LoginPage'
 import { registerAction, RegisterPage } from './pages/RegisterPage'
 import { AccountLayout } from './layouts/AccountLayout'
 import { logOutLoader, LogOutPage } from './pages/LogOutPage'
-import { accountMainLoader, AccountMainPage } from './pages/AccountMainPage'
+import { AccountMainPage } from './pages/AccountMainPage'
 import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
 import { createPostAction, NewPostPage } from './pages/NewPostPage'
 import { PostDetailsPage } from './pages/PostDetailsPage'
@@ -50,7 +50,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="account/" element={<AccountLayout/>}>
     
       {/* main account page */}
-      <Route index element={<AccountMainPage/>} loader={accountMainLoader}/>
+      <Route index element={<AccountMainPage/>}/>
 
       {/* user info page */}
       <Route path="userInfo" element={<UserInfoPage/>} loader={userInfoLoader}/>

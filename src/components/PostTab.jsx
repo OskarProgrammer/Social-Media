@@ -1,51 +1,28 @@
-
-// importing functions and components from react library
-import { useEffect, useState } from "react"
-
-// importing api functions
-import { getCommentsFromPost } from "../api_functions/functions"
+import { useQuery } from "react-query"
 import { NavLink } from "react-router-dom"
+import { getCommentsFromPost } from "../api_functions/functions"
 
+export const PostTab = ( {post} ) => {
 
-
-export const PostTab = ( { postInfo } ) => {
-
-    let [loading, setLoading] = useState(true)
-    let [comments, setComments] = useState()
-
-    const getComments = async () => {
-        comments = await getCommentsFromPost(
-            postInfo.id
-        )
-        
-        setComments(comments)
-        setLoading(false)
-    }
-
-    useEffect(()=>{
-        getComments()
+    const { data : comments, refetch : refreshComments} = useQuery({
+        queryFn : () => getCommentsFromPost(post.id),
+        queryKey : ["comments"],
+        refetchInterval : 500
     })
-    
 
     return (
-        <>
-            {loading ? <p>Loading...</p>
-                     : 
-                     <NavLink to={`/post/${postInfo.id}`} className="postTab">
-
-                        <p>{postInfo.title}</p>
-                        
-                        <div className="flex flex-row gap-5 justify-center">
-                            <p>
-                                <i className="bi bi-hand-thumbs-up-fill"/> {postInfo.likes.length}
-                            </p>
-                            <p>
-                                <i className="bi bi-chat-fill"/> {comments.length}
-                            </p>
-                        </div >
-
-                    </NavLink>
-            }
-        </>
+        <NavLink to={`/post/${post.id}`} className="flex flex-col gap-2 w-full text-[20px] p-3 border-2 border-slate-950 shadow-2xl rounded-lg">
+            <p className="text-xl">{post.title}</p>
+            <div className="flex flex-row gap-6 justify-center">
+                <div className="flex flex-col gap-2">
+                    <i className="bi bi-hand-thumbs-up-fill text-[50px]"/>
+                    {post.likes.length}
+                </div>
+                <div className="flex flex-col gap-2">
+                    <i className="bi bi-chat-fill text-[50px]"/>
+                    {comments?.length}
+                </div>
+            </div>
+        </NavLink>
     )
 }

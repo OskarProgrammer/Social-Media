@@ -3,75 +3,46 @@
 import { getCurrentUserInfo } from "../api_functions/functions"
 
 // importing components
-import { AccountInfoTab } from "../components/AccountInfoTab"
-import { CommentsInfoTab } from "../components/CommentsInfoTab"
-import { LikesInfoTab } from "../components/LikesInfoTab"
-import { PostsInfoTab } from "../components/PostsInfoTab"
-import { UserInfoTab } from "../components/UserInfoTab"
-import { FollowingInfoTab } from "../components/FollowingInfoTab"
-import { FollowersInfoTab } from "../components/FollowersInfoTab"
 import { PageTitle } from "../components/PageTitle"
+import { FollowersTab } from "../components/FollowersTab"
+import { FollowingsTab } from "../components/FollowingsTab"
+import { PostsTab } from "../components/PostsTab"
+import { CommentsTab } from "../components/CommentsTab"
+import { LikesTab } from "../components/LikesTab"
+import { UserInfoTab } from "../components/UserInfoTab"
 
 
 // importing functions and components from react library
-import { useLoaderData } from "react-router-dom"
-import { useState } from "react"
-import { useEffect } from "react"
+import { createContext } from "react"
+import { useQuery } from "react-query"
 
+export const CurrentUserContext = createContext(null)  
 
 export const AccountMainPage = () => {
 
-    // getting loader data
-    const currentUserLoader = useLoaderData()
-
-    // craeting useState variables
-    let [currentUser, setCurrentUser] = useState(currentUserLoader)
-
-    // useEffect to update currentUser
-    useEffect(()=>{
-        const interval = setInterval( async () => { 
-
-            try {
-                currentUser = await getCurrentUserInfo()
-            } catch { throw new Error("Error during updating data")}
-
-            setCurrentUser(currentUser)
-
-        },100)
-
-        return () => {clearInterval(interval)}
+    const { data : currentUser, refetch : refreshCurrentUser} = useQuery({
+        queryFn : () => getCurrentUserInfo(),
+        queryKey : [ "currentUser" ],
+        refetchInterval : 500
     })
-
 
     return (
         <div className="accountLayout">
             <PageTitle title="Account Page" />
 
-            <AccountInfoTab />
-
-            <UserInfoTab currentUser={currentUser}/>
-
-            <PostsInfoTab currentUser={currentUser}/>
-
-            <LikesInfoTab currentUser={currentUser}/>
-
-            <CommentsInfoTab currentUser={currentUser}/>
-
-            <FollowingInfoTab currentUser={currentUser}/>
-
-            <FollowersInfoTab currentUser={currentUser}/>
+            <div className="title">
+                <p>Account {currentUser?.login}</p>
+            </div>
+            
+            <CurrentUserContext.Provider value={currentUser}>
+                <FollowersTab />
+                <FollowingsTab />
+                <PostsTab />
+                <LikesTab />
+                <CommentsTab/>
+                <UserInfoTab/>
+            </CurrentUserContext.Provider>
 
         </div>
     )
-}
-
-export const accountMainLoader = async () => {
-
-    let currentUser = await getCurrentUserInfo()
-
-    if (currentUser.length > 1) {
-        throw new Error("You havent got access to this account")
-    }
-
-    return currentUser
 }

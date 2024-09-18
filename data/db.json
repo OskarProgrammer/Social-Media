@@ -1,7 +1,7 @@
 {
   "currentUser": {
-    "id": "",
-    "isLogged": false
+    "id": "22",
+    "isLogged": true
   },
   "users": [
     {
@@ -27,7 +27,33 @@
       "readMessages": []
     }
   ],
-  "posts": [],
-  "comments": [],
-  "notifications": []
+  "posts": [
+    {
+      "id": "23687e06-5efb-48b7-9dbc-e7ef308c1e40",
+      "title": "t",
+      "desc": "t",
+      "img": "t",
+      "likes": [],
+      "ownerID": "22",
+      "createdAt": "2024-09-18T20:27:17.440Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": "30c7af79-c765-4ff2-bdf6-effbc04719d0",
+      "ownerID": "22",
+      "postID": "23687e06-5efb-48b7-9dbc-e7ef308c1e40",
+      "comment": "s",
+      "createdAt": "2024-09-18T20:52:01.833Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "d33b20e8-6771-440d-ac04-9d29b2c3f2a3",
+      "ownerID": "22",
+      "message": "New post from ",
+      "postID": "23687e06-5efb-48b7-9dbc-e7ef308c1e40",
+      "createdAt": "2024-09-18T20:27:17.440Z"
+    }
+  ]
 }

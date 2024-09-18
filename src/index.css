@@ -16,32 +16,48 @@
   }
 
   .accountLayout{
-    @apply grid w-9/12 gap-4 font-bold;
-    @apply grid-cols-5 grid-rows-5 lg:sm:grid-rows-4 gap-4;
+    @apply grid w-10/12 gap-10 font-bold ;
+    @apply grid-cols-4 text-slate-950;
   }
 
-  .card {
-    @apply p-3 shadow-2xl text-center rounded-lg efectOfTransition bg-gray-950;
-    @apply flex flex-col;
-    @apply hover:text-white ;
-  }
-  
-  .content {
-    @apply pt-8 flex flex-col gap-2;
-    height: 250px;
-    overflow-y: auto;
+  .title {
+    @apply  col-span-full mx-auto;
   }
 
-  .content > p:first-child {
-    @apply rounded-b-lg underline underline-offset-8;
+  .tab {
+    @apply shadow-lg shadow-slate-950 p-5 rounded-lg min-h-60 h-60 max-h-96 efectOfTransition text-center overflow-hidden ;
+    @apply hover:h-full;
+    @apply lg:sm:col-span-2 col-span-full
   }
 
-  .accountInfoTitle {
-    @apply card col-span-5 row-span-1 col-start-1 row-start-1;
+  .followersTab {
+    @apply tab;
+    overflow: auto;
   }
 
-  .styleOfTitle {
-    @apply lg:sm:text-5xl lg:sm:p-5 text-5xl my-auto ;
+  .followingTab {
+    @apply tab;
+    overflow: auto;
+  }
+
+  .postsTab {
+    @apply tab flex flex-col gap-4;
+    overflow: auto;
+  }
+
+  .likesTab {
+    @apply tab;
+    overflow: auto;
+  }
+
+  .commentsTab {
+    @apply tab;
+    overflow: auto;
+  }
+
+  .userInfoTab {
+    @apply tab flex flex-col gap-3;
+    overflow: auto;
   }
 
   .form {
