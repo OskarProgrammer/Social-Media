@@ -22,6 +22,7 @@ import { PostDetailsPage } from './pages/PostDetailsPage'
 import { UserPostsPage } from './pages/UserPostsPage'
 import { ErrorPage } from './pages/ErrorPage'
 import { UserDetailsPage } from './pages/UserDetailsPage'
+import { MessagesPage } from './pages/MessagesPage'
 
 
 // creating router
@@ -57,6 +58,8 @@ const router = createBrowserRouter(createRoutesFromElements(
       {/* new post page */}
       <Route path="newPost" element={<NewPostPage/>} action={createPostAction}/>
 
+      {/* messages page */}
+      <Route path="messages" element={<MessagesPage/>}/>
 
       {/* log out page */}
       <Route path="logOut" element={<LogOutPage/>} loader={logOutLoader}/>

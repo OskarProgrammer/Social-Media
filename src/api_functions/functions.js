@@ -82,3 +82,17 @@ export const getUserById = async ( userID ) => {
 
     return user
 }
+
+export const getAmountOfMessages = async ( ) => {
+    // getting currentUser
+    const currentUser = await getCurrentUserInfo()
+    
+    return currentUser.messages.length
+}
+
+export const getMessages = async () => {
+    // getting currentUser
+    const currentUser = await getCurrentUserInfo()
+    
+    return currentUser.readMessages
+}

@@ -1,10 +1,14 @@
 
 // importing functions and components from react library
+import { useContext } from "react"
 import { NavLink } from "react-router-dom"
 
-export const NavBar = ( props ) => {
+// importing contexts
+import { UserContext } from "../layouts/MainLayout"
 
-    const currentUser = props.currentUser
+export const NavBar = ( ) => {
+
+    const currentUser = useContext(UserContext)
 
     return (
         <div className="navBar">

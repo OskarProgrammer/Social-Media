@@ -322,4 +322,25 @@
     @apply hover:bg-slate-950 hover:text-white hover:shadow-lg hover:shadow-slate-950;
   }
 
+  .messageIcon {
+    @apply text-slate-950 border-2 flex items-center justify-center efectOfTransition cursor-pointer
+    border-slate-950 text-center rounded-full h-20 w-20 fixed right-2 bottom-2 m-8;
+    @apply hover:bg-slate-950 
+  }
+
+  .messageIcon:hover > i {
+    @apply text-white
+  }
+
+  .amountMessages {
+    @apply p-2 rounded-full text-sm absolute w-12 text-wrap break-all top-[-10px] right-[-24px] font-bold text-white
+  }
+
+  .messageContainer {
+    @apply text-slate-950 lg:sm:w-6/12 w-10/12 flex flex-col justify-center text-center
+  }
+
+  .titleOfMessages {
+    @apply p-5 text-[40px] font-bold
+  }
 }

@@ -1,7 +1,7 @@
 
 // importing functions and components from react library
 import { useQuery } from "react-query"
-import { NavLink, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { createContext } from "react"
 
 // importing api functions
@@ -46,6 +46,7 @@ export const UserDetailsPage = ( ) => {
 
     return (
         <div className="flex flex-col gap-4 text-gray-950 lg:sm:w-6/12 w-full text-center p-3">
+
             <ProfileImage />
 
             <CurrentUserContext.Provider value={currentUserInfo}>

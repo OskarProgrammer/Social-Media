@@ -1,13 +1,18 @@
 
 // importing functions and components from react library
 import { Outlet, useLoaderData } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 // importing components
 import { NavBar } from "../components/NavBar"
+import { MessageIcon } from "../components/MessageIcon"
 
 // importing api functions
 import axios from "axios"
+
+// contexts
+export const UserContext = createContext(null)
+
 
 export const MainLayout = () => {
 
@@ -33,7 +38,12 @@ export const MainLayout = () => {
 
     return (
         <>
-            <NavBar currentUser={currentUser} />
+            <UserContext.Provider value={currentUser}>
+                <NavBar />
+                
+                { currentUser.id != "" ? <MessageIcon/> : ""}
+            </UserContext.Provider>
+
             <div className="m-10 flex justify-center text-white text-2xl p-5 mx-auto">
                 <Outlet />
             </div>
