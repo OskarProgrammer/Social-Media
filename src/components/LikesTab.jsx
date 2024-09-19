@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { CurrentUserContext } from "../pages/AccountMainPage"
 import { useQuery } from "react-query"
 import { getLikesOfUser } from "../api_functions/functions"
+import { LikeTab } from "./LikeTab"
 
 export const LikesTab = () => {
 
@@ -16,6 +17,13 @@ export const LikesTab = () => {
     return (
         <div className="likesTab">
             <p>Likes {likes?.length}</p>
+
+            <div className="likesList">
+                {likes?.map( like => (
+                    <LikeTab key={like.id} like={like} />
+                ))}
+            </div>
+
         </div>
     )
 }

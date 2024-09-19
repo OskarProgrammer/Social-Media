@@ -33,7 +33,9 @@
       "title": "t",
       "desc": "t",
       "img": "t",
-      "likes": [],
+      "likes": [
+        "22"
+      ],
       "ownerID": "22",
       "createdAt": "2024-09-18T20:27:17.440Z"
     }

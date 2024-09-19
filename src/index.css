@@ -50,9 +50,22 @@
     overflow: auto;
   }
 
+  .likesList {
+    @apply grid lg:sm:grid-cols-3 grid-cols-2 gap-5 p-5;
+  }
+
+  .likeTab {
+    @apply shadow-xl border-b-2 border-slate-950 h-32 rounded-lg efectOfTransition text-[20px] font-thin break-all;
+    @apply hover:shadow-slate-950 hover:cursor-pointer;
+  }
+
   .commentsTab {
-    @apply tab;
+    @apply tab flex flex-col gap-4;
     overflow: auto;
+  }
+
+  .commentSectionTab {
+    @apply flex flex-col gap-3 p-4 m-2 shadow-lg text-slate-950 border-2 border-slate-950 rounded-lg;
   }
 
   .userInfoTab {
