@@ -43,6 +43,8 @@ export const getCommentsFromPost = async ( postID ) => {
 }
 
 export const getCommentsOfUser = async ( userID ) => {
+
+    if (userID == undefined ) { return }
     
     // getting all comments
     const comments = await axios.get("http://localhost:3000/comments/").then((res)=>{ return res.data })
@@ -54,6 +56,8 @@ export const getCommentsOfUser = async ( userID ) => {
 }
 
 export const getLikesOfUser = async ( userID ) => {
+
+    if (userID == undefined ) { return }
     
     // getting all posts
     const posts = await axios.get("http://localhost:3000/posts/").then((res)=>{ return res.data })
@@ -76,6 +80,8 @@ export const getPosts = async ( filter = "" ) => {
 }
 
 export const getUserById = async ( userID ) => {
+    if (userID == undefined) { return }
+
     // getting user
     const user = await axios.get(`http://localhost:3000/users/${userID}`).then( res => res.data)
                                                                          .catch(e => e)

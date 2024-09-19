@@ -18,7 +18,7 @@ export const CommentsTab = () => {
     const currentUser = useContext(CurrentUserContext)
 
     const { data : comments, refetch : refreshComments, isLoading} = useQuery({
-        queryFn : () => getCommentsOfUser(currentUser.id),
+        queryFn : () => getCommentsOfUser(currentUser?.id),
         queryKey : ["comments"],
         refetchInterval : 500,
         retryDelay : 200

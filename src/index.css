@@ -40,6 +40,15 @@
     overflow: auto;
   }
 
+  .followingsList {
+    @apply grid lg:sm:grid-cols-4 grid-cols-2 gap-3
+  }
+
+  .followingPerson {
+    @apply col-span-1 text-slate-950 border-b-2 border-slate-950 p-3 shadow-lg text-wrap break-all min-h-28 rounded-xl text-lg flex justify-center items-center efectOfTransition;
+    @apply hover:shadow-lg hover:shadow-slate-950 hover:cursor-pointer;
+  }
+
   .postsTab {
     @apply tab flex flex-col gap-4;
     overflow: auto;
