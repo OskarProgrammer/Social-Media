@@ -7,11 +7,12 @@ import { useEffect, useState } from "react"
 
 // importing date functions
 import { getSecondsDiff, getMinutesDiff, getHoursDiff } from "../date_functions/date_functions"
+import { useQuery } from "react-query"
+import { NavLink } from "react-router-dom"
 
 
 export const CommentTab = ( { commentInfo } ) => {
 
-    let [author, setAuthor] = useState()
 
     const diff = () =>{
         // creating format
@@ -38,25 +39,29 @@ export const CommentTab = ( { commentInfo } ) => {
         }
     }
 
-    const fetchData = async () => {
-        author = await axios.get(`http://localhost:3000/users/${commentInfo.ownerID}`).then((res) => res.data)
-        setAuthor(author)
-    }
-
-    useEffect(()=>{
-        fetchData()
-    }, [])
+    const { data : author, isLoading} = useQuery({
+        queryFn : async () => await axios.get(`http://localhost:3000/users/${commentInfo.ownerID}`).then((res) => res.data),
+        queryKey : ["author"],
+        refetchInterval : 300
+    })
 
     return (
         <div className="commentTab">
-            <div className="authorImage text-gray-950">
+
+            <NavLink to={`/user/${author?.id}`} className="authorImage text-gray-950">
+
                 <i className="bi bi-person-circle"/>
                 <p>{author?.login}</p>
                 <p>{diff()}</p>
-            </div>
+
+            </NavLink>
+
             <div className="comment">
+
                 {commentInfo.comment}
+                
             </div>
+
         </div>
     )
 }

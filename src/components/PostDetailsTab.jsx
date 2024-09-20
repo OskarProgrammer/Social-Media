@@ -13,6 +13,7 @@ import { CommentTab } from "./CommentTab"
 // importing date functions
 import { getHoursDiff, getSecondsDiff, getMinutesDiff } from "../date_functions/date_functions"
 import { NavLink } from "react-router-dom"
+import { cn } from "../utils/utils"
 
 
 const useData = ( postID ) => {
@@ -49,9 +50,6 @@ export const PostDetailsTab =  ({ postID }) => {
     let [isExpanded , setIsExpanded] = useState(false)
     let [comment, setComment] = useState("")
     let [postInfoLoader, authorInfo] = useData( postID )
-    
-
-    
 
     const { data : comments, isLoading, refetch : refreshComments} = useQuery({
         queryFn: () => getCommentsFromPost(postID),
@@ -126,6 +124,7 @@ export const PostDetailsTab =  ({ postID }) => {
         }
     }
 
+
     return (
         <div className="postDetails">
 
@@ -139,7 +138,7 @@ export const PostDetailsTab =  ({ postID }) => {
 
                 <div className="infoBar">
 
-                    <NavLink to={`/user/${authorInfo?.id}`} className="authorImage text-white">
+                    <NavLink to={`/user/${authorInfo?.id}`} className="authorImage">
                         <i className="bi bi-person-circle"/>
                         <p>{authorInfo?.login}</p>
                     </NavLink>
@@ -157,7 +156,11 @@ export const PostDetailsTab =  ({ postID }) => {
 
                     {currentUser !== undefined ? 
                      <>
-                        <button className={`btn border-0 shadow-none ${postInfoLoader?.likes.includes(currentUser?.id) ? "liked" : "disLiked"}`} onClick={()=>{ like() }}>
+                        <button className={cn(`btn border-0 shadow-none`, {
+                            "liked" : postInfoLoader?.likes.includes(currentUser.id),
+                            "disLiked" : !postInfoLoader?.likes.includes(currentUser.id)
+                        })} 
+                        onClick={()=>{ like() }}>
                             <i className="bi bi-hand-thumbs-up-fill"/>
                             <p className="text-gray-500">{postInfoLoader?.likes.length}</p>
                         </button>

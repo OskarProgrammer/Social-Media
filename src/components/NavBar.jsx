@@ -21,7 +21,7 @@ export const NavBar = ( ) => {
                 </NavLink>
 
                 {currentUser.isLogged ? 
-                    <NavLink to="/account" className="btn-blue lg:sm:block sm:hidden hidden">
+                    <NavLink to="/account" className="btn-blue lg:sm:block sm:hidden hidden text-slate-950">
                         <i className="bi bi-person"/>
                     </NavLink> 
                 : ""}
@@ -41,18 +41,18 @@ export const NavBar = ( ) => {
                 </NavLink>
 
                 {currentUser.isLogged ? 
-                    <NavLink to="/account" className="btn-blue lg:sm:hidden">
+                    <NavLink to="/account" className="btn-blue lg:sm:hidden text-slate-950">
                         <i className="bi bi-person"/>
                     </NavLink> 
                 : ""}
 
                 { !currentUser.isLogged ? 
                     <>
-                        <NavLink to="/login" className="btn-blue flex flex-col">
+                        <NavLink to="/login" className="btn-blue flex flex-col text-slate-950">
                             <p className="my-auto">Sign in</p>
                         </NavLink>
 
-                        <NavLink to="/register" className="btn-blue flex flex-col">
+                        <NavLink to="/register" className="btn-blue flex flex-col text-slate-950">
                         <p className="my-auto">Sign up</p>
                         </NavLink>
                     </> 

@@ -33,9 +33,7 @@
       "title": "t",
       "desc": "t",
       "img": "t",
-      "likes": [
-        "22"
-      ],
+      "likes": [],
       "ownerID": "22",
       "createdAt": "2024-09-18T20:27:17.440Z"
     }
@@ -47,6 +45,13 @@
       "postID": "23687e06-5efb-48b7-9dbc-e7ef308c1e40",
       "comment": "s",
       "createdAt": "2024-09-18T20:52:01.833Z"
+    },
+    {
+      "id": "8ad3c892-4e8f-4ba6-9bd4-fd216bc3c7bf",
+      "ownerID": "22",
+      "postID": "23687e06-5efb-48b7-9dbc-e7ef308c1e40",
+      "comment": "he",
+      "createdAt": "2024-09-20T08:49:53.652Z"
     }
   ],
   "notifications": [
