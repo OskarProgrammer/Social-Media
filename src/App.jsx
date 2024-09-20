@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import './App.css'
 
 // importing layouts
-import { MainLayout, mainLoader } from './layouts/MainLayout'
+import { MainLayout } from './layouts/MainLayout'
 
 // importing pages
 import { MainPage } from "./pages/MainPage"
@@ -27,7 +27,7 @@ import { MessagesPage } from './pages/MessagesPage'
 
 // creating router
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<MainLayout/>} loader={mainLoader} errorElement={<ErrorPage/>}>
+  <Route path="/" element={<MainLayout/>} errorElement={<ErrorPage/>}>
     {/* main page */}
     <Route index element={<MainPage/>}/>
 

@@ -20,7 +20,6 @@ export const CommentsTab = () => {
     const { data : comments, refetch : refreshComments, isLoading} = useQuery({
         queryFn : () => getCommentsOfUser(currentUser?.id),
         queryKey : ["comments"],
-        refetchInterval : 500,
         retryDelay : 200
     })
 
@@ -29,7 +28,7 @@ export const CommentsTab = () => {
         <div className="commentsTab">
             <p>Comments {comments?.length}</p>
 
-            { isLoading ? "Loading..." : ""}
+            { isLoading ? <p className="text-slate-950">Loading...</p>: ""}
 
             {comments?.map( comment => (
                 <CommentShortcutTab key={comment.id} comment={comment}/>

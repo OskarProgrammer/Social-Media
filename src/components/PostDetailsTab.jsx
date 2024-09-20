@@ -133,7 +133,7 @@ export const PostDetailsTab =  ({ postID }) => {
                 </div>
 
                 <div className="image">
-                    <p>s</p>
+                    <p>Image</p>
                 </div>
 
                 <div className="infoBar">

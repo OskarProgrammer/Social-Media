@@ -20,7 +20,7 @@ export const CurrentUserContext = createContext(null)
 
 export const AccountMainPage = () => {
 
-    const { data : currentUser, refetch : refreshCurrentUser} = useQuery({
+    const { data : currentUser} = useQuery({
         queryFn : () => getCurrentUserInfo(),
         queryKey : [ "currentUser" ],
         refetchInterval : 500

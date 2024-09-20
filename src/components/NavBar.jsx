@@ -20,7 +20,7 @@ export const NavBar = ( ) => {
                     <i className="bi bi-house"/>
                 </NavLink>
 
-                {currentUser.isLogged ? 
+                {currentUser?.isLogged ? 
                     <NavLink to="/account" className="btn-blue lg:sm:block sm:hidden hidden text-slate-950">
                         <i className="bi bi-person"/>
                     </NavLink> 
@@ -40,13 +40,13 @@ export const NavBar = ( ) => {
                     <i className="bi bi-house"/>
                 </NavLink>
 
-                {currentUser.isLogged ? 
+                {currentUser?.isLogged ? 
                     <NavLink to="/account" className="btn-blue lg:sm:hidden text-slate-950">
                         <i className="bi bi-person"/>
                     </NavLink> 
                 : ""}
 
-                { !currentUser.isLogged ? 
+                { !currentUser?.isLogged ? 
                     <>
                         <NavLink to="/login" className="btn-blue flex flex-col text-slate-950">
                             <p className="my-auto">Sign in</p>

@@ -22,10 +22,13 @@ export const RegisterPage = () => {
             <h2 className="titleOfForm">Register form</h2>
 
             <input type="text" className="inputField" placeholder="Login" name="login"/>
+            <hr className="line" />
 
             <input type="password" className="inputField" placeholder="Password" name="password"/>
+            <hr className="line" />
 
             <input type="password" className="inputField" placeholder="Confirm password" name="confirmPassword"/>
+            <hr className="line" />
 
             <p className="informationTag"> 
                 Have got account already ?  

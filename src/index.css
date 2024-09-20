@@ -138,7 +138,7 @@
   }
 
   .image {
-    @apply m-5 w-11/12 mx-auto min-h-[400px] shadow-slate-950 shadow-lg rounded-xl bg-white;
+    @apply m-5 w-11/12 mx-auto min-h-[400px] shadow-slate-950 shadow-lg rounded-xl bg-white flex items-center justify-center;
   }
 
   .infoBar {

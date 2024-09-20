@@ -22,8 +22,10 @@ export const LoginPage = () => {
             <h2 className="titleOfForm">Login form</h2>
 
             <input type="text" className="inputField" placeholder="Login" name="login"/>
+            <hr className="line" />
 
             <input type="password" className="inputField" placeholder="Password" name="password"/>
+            <hr className="line" />
 
             <p className="informationTag"> 
                 Haven't got account yet ?  
