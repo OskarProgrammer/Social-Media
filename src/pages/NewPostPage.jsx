@@ -23,8 +23,13 @@ export const NewPostPage = () => {
             <h2 className="titleOfForm">Create your new post</h2>
             
             <input type="text" className="inputField" placeholder="Title"  name="title"/>
+            <hr className="line" />
+
             <input type="text" className="inputField" placeholder="Description" name="desc"/>
+            <hr className="line" />
+
             <input type="text" className="inputField" placeholder="Image" name="img"/>
+            <hr className="line" />
 
             { actionData && 
               actionData.error && 

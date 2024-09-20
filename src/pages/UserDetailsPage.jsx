@@ -29,6 +29,7 @@ export const UserDetailsPage = ( ) => {
     let {data : userInfo, refetch : refreshUserInfo} = useQuery({
         queryFn : () => getUserById(userID), 
         queryKey : [ "userInfo" ],
+        enabled : userID != undefined,
         refetchInterval : 100
     })
 

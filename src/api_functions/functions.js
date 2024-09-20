@@ -11,13 +11,17 @@ export const getCurrentUserInfo = async () => {
     } catch { throw new Error("Error during getting current user")}
 
     if (currentUser.id == "") { return undefined }
+    
+    let result = currentUser
 
     try {
         currentUser = await axios.get(`http://localhost:3000/users/${currentUser.id}`).then((response) => {return response.data})
                                                                                       .catch((error) => {return error})
     } catch { throw new Error("Error during getting current user")}
 
-    return currentUser
+    result = {...currentUser, ...result}
+
+    return result
 }
 
 export const getPostsOfUser = async ( personID) => {

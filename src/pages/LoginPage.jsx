@@ -1,6 +1,8 @@
 
 // importing functions and components from react library
-import { Form, Link, redirect, useActionData } from "react-router-dom"
+import { Link, redirect } from "react-router-dom"
+import { useRef, useState } from "react"
+import { useMutation, useQueryClient } from "react-query"
 
 // importing api functions
 import axios from "axios"
@@ -8,23 +10,57 @@ import axios from "axios"
 // importing components
 import { PageTitle } from "../components/PageTitle"
 
+// utils
+import { redirectToPage } from "../utils/utils"
+
 
 export const LoginPage = () => {
 
-    // getting action data
-    const actionData = useActionData()
+    const loginRef = useRef(null)
+    const passwordRef = useRef(null)
+    const queryClient = useQueryClient()
+    const [error, setError] = useState(null)
+
+    const loginMutation = useMutation({
+        mutationFn : async ({id}) => await axios.put(`http://localhost:3000/currentUser/`,{id : id, isLogged : true}),
+        onSuccess : () => {
+            queryClient.invalidateQueries("currentUser")
+        }
+    })
+
+    const logIn = async () => {
+        // getting fields
+        const login = loginRef.current.value
+        const password = passwordRef.current.value
+
+        // validating fields
+        if ( !login.length || !password.length ) { setError("All fields must be provided "); return; }
+        
+        //  checking data in database
+        const users = await axios.get("http://localhost:3000/users/").then( (data) => { return data.data})
+        const user = users.filter((e) => (e.login == login) && (e.password == password))
+
+        if ( !user.length ) { setError("Login or password is invalid"); return }
+
+        loginMutation.mutate({ id : user[0].id})
+
+        redirectToPage("/")
+    }
 
 
     return (
-        <Form method="POST" action="/login" className="form">
+        <form method="POST" onSubmit={(e) => {
+            e.preventDefault()
+            logIn()
+        }} className="form">
             <PageTitle title="Sign in" />
 
             <h2 className="titleOfForm">Login form</h2>
 
-            <input type="text" className="inputField" placeholder="Login" name="login"/>
+            <input ref={loginRef} type="text" className="inputField" placeholder="Login" name="login"/>
             <hr className="line" />
 
-            <input type="password" className="inputField" placeholder="Password" name="password"/>
+            <input ref={passwordRef} type="password" className="inputField" placeholder="Password" name="password"/>
             <hr className="line" />
 
             <p className="informationTag"> 
@@ -36,42 +72,12 @@ export const LoginPage = () => {
 
             </p>
 
-            { actionData && 
-              actionData.error && 
-              <p className="errorMessage"> {actionData.error} </p>
+            { error != null && 
+              <p className="errorMessage"> {error} </p>
             }
 
             <button className="btn-green mx-auto">Sign in</button>
 
-        </Form>
+        </form>
     )
-}
-
-export const loginAction = async ( {request} ) => {
-    // getting data from form
-    const formData = await request.formData()
-
-    // getting fields
-    const login = formData.get("login")
-    const password = formData.get("password")
-
-    // validating fields
-    if ( !login.length || !password.length ) { return { error : "All fields must be provided "} }
-    
-    //  checking data in database
-    const users = await axios.get("http://localhost:3000/users/").then( (data) => { return data.data})
-    const user = users.filter((e) => (e.login == login) && (e.password == password))
-
-    if ( !user.length ) { return { error : "Login or password is invalid" } }
-
-    let currentUser = {
-        id : user[0].id,
-        isLogged : true
-    }
-
-    try {
-        await axios.put("http://localhost:3000/currentUser/" , currentUser)
-    } catch { return { error : "Something went wrong " } }
-
-    return redirect("/account/")
 }

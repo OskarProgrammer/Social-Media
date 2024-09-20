@@ -10,6 +10,9 @@ import axios from "axios"
 // importing components
 import { NotificationItem } from "../components/NotificationItem"
 
+// importing custom hooks
+import { useMessages } from "../custom_hooks/custom"
+
 
 const useTransferMessages = () => {
     
@@ -34,11 +37,7 @@ export const MessagesPage = () => {
 
     useTransferMessages()
 
-    const { data : messages, refetch : refreshMessages } = useQuery({
-        queryFn : () => getMessages(),
-        queryKey : ["messages"],
-        refetchInterval : 200,
-    })
+    const { data : messages } = useMessages()
 
     const removeNoti = async (notifyID) => {
         // getting current user

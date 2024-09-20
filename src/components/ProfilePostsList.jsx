@@ -24,7 +24,7 @@ export const ProfilePostsList = () => {
             
             <div className="profilePostsList">
                 {userPosts?.map((post) => (
-                    <Post postInfo={post}/>
+                    <Post key={post.id} postInfo={post}/>
                 ))}
             </div>
 

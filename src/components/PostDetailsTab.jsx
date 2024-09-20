@@ -1,7 +1,8 @@
 
 // importinmg functions and components from react library
-import { useEffect, useState } from "react"
-import { useQuery } from "react-query"
+import { useState } from "react"
+import { QueryClient, useMutation, useQuery, useQueryClient } from "react-query"
+import { NavLink } from "react-router-dom"
 
 // importing api functions 
 import axios from "axios"
@@ -10,124 +11,37 @@ import { getCommentsFromPost, getCurrentUserInfo } from "../api_functions/functi
 // importing components
 import { CommentTab } from "./CommentTab"
 
-// importing date functions
-import { getHoursDiff, getSecondsDiff, getMinutesDiff } from "../date_functions/date_functions"
-import { NavLink } from "react-router-dom"
-import { cn } from "../utils/utils"
+// importing utils functions
+import { cn, createComment, diff, like } from "../utils/utils"
 
-
-const useData = ( postID ) => {
-
-    let [postInfo, setPostInfo] = useState()
-    let [authorInfo, setAuthorInfo] = useState()
-
-
-    useEffect(()=>{
-        const timeout = setTimeout(async () => {
-
-            // getting postInfo
-            postInfo = await axios.get(`http://localhost:3000/posts/${postID}`).then( (res) => { return res.data } )
-                                                                               .catch( () => { throw new Error("Error during postInfo fetch")} )
-            setPostInfo(postInfo)
-    
-            // getting author info
-            authorInfo = await axios.get(`http://localhost:3000/users/${postInfo.ownerID}`).then((res)=>{ return res.data })
-                                                                                           .catch( () => { throw new Error("Error during authorInfo fetch")})
-            setAuthorInfo(authorInfo)
-            
-        }, 100)
-
-        return () => { clearTimeout(timeout) }
-    },[])
-
-    return [postInfo,
-        authorInfo]
-}
+// importing custom hooks
+import { useAuthor, useComments, useCurrentUser, usePost } from "../custom_hooks/custom"
 
 
 export const PostDetailsTab =  ({ postID }) => {
 
     let [isExpanded , setIsExpanded] = useState(false)
     let [comment, setComment] = useState("")
-    let [ authorInfo] = useData( postID )
+    const queryClient = useQueryClient()
 
-    const { data : comments, isLoading, refetch : refreshComments} = useQuery({
-        queryFn: () => getCommentsFromPost(postID),
-        queryKey: ["comments",postID],
-        refetchOnWindowFocus: true,
+    const { data : comments} = useComments({postID : postID})
+    const { data : postInfoLoader, isLoading : postInfoLoaderLoading} = usePost({postID : postID})
+    const { data : authorInfo} = useAuthor( { ownerID : postInfoLoader?.ownerID})
+    const { data : currentUser} = useCurrentUser()
+
+    const createCommentMutation = useMutation({
+        mutationFn: createComment,
+        onSuccess :  () => {
+            queryClient.invalidateQueries({ queryKey: ['comments', postID] })
+        }
     })
 
-    const { data : currentUser, isLoading : currentUserLoading} = useQuery(
-        {
-            queryFn: () => getCurrentUserInfo(),
-            queryKey: ["currentUserInfo"],
-            refetchOnWindowFocus: true,
-            refetchInterval: 500
+    const likeMutation = useMutation({
+        mutationFn : like,
+        onSuccess : () => {
+            queryClient.invalidateQueries({queryKey : ["postInfo", postID]})
         }
-    )
-
-    const { data : postInfoLoader, isLoading : postInfoLoaderLoading} = useQuery({
-        queryFn : async () => await axios.get(`http://localhost:3000/posts/${postID}`).then( (res) => { return res.data } ),
-        queryKey : ["postInfo", postID],
     })
-
-    const createComment = async ( ) => {
-
-        if (comment.length == 0) { return }
-    
-        // creating newComment object
-        const newComment = {
-            id : crypto.randomUUID(),
-            ownerID: currentUser.id,
-            postID: postInfoLoader.id,
-            comment: comment,
-            createdAt : new Date()
-        }
-    
-        try {
-            await axios.post(`http://localhost:3000/comments/`, newComment)
-        } catch { throw new Error("Error during creating new comment") }
-        
-        refreshComments()
-    }
-
-    const like = async () => {
-        if ( postInfoLoader.likes.includes(currentUser.id) ) {
-            postInfoLoader.likes = postInfoLoader.likes.filter( e => e != currentUser.id)
-        } else {
-            postInfoLoader.likes.push(currentUser.id)
-        }
-        
-        try {
-            await axios.put(`http://localhost:3000/posts/${postInfoLoader.id}`, postInfoLoader)
-        } catch { throw new Error("Something went wrong")}
-
-    }
-
-    const diff = () =>{
-        // creating format
-        const responseFormat = ( text ) =>{
-            return "Posted " + text + " ago"
-        }
-
-        // creating current date
-        const currentDate = new Date()
-
-        // getting diff between current date and date of creating the postInfoLoader
-        const secondsDiff = getSecondsDiff(currentDate, new Date(postInfoLoader?.createdAt))
-        const minutesDiff = getMinutesDiff(currentDate, new Date(postInfoLoader?.createdAt))
-        const hoursDiff = getHoursDiff(currentDate, new Date(postInfoLoader?.createdAt))
-        
-        if ( secondsDiff > 60 ){
-            if ( minutesDiff > 60) {
-                return responseFormat(`${hoursDiff} hours`)
-            }else{
-                return responseFormat(`${minutesDiff} minutes`)
-            }
-        } else {
-            return responseFormat(`${secondsDiff} seconds`)
-        }
-    }
 
     if (postInfoLoaderLoading) { return <div className="postDetails"> <p className="m-5">Loading...</p> </div> }
 
@@ -135,7 +49,7 @@ export const PostDetailsTab =  ({ postID }) => {
         <div className="postDetails">
 
                 <div className="dateOfCreation">
-                    {diff()}
+                    {diff(postInfoLoader)}
                 </div>
 
                 <div className="image">
@@ -166,7 +80,7 @@ export const PostDetailsTab =  ({ postID }) => {
                             "liked" : postInfoLoader?.likes.includes(currentUser.id),
                             "disLiked" : !postInfoLoader?.likes.includes(currentUser.id)
                         })} 
-                        onClick={()=>{ like() }}>
+                        onClick={()=>{ likeMutation.mutate({postInfo : postInfoLoader, user : currentUser}) }}>
                             <i className="bi bi-hand-thumbs-up-fill"/>
                             <p className="text-gray-500">{postInfoLoader?.likes.length}</p>
                         </button>
@@ -195,7 +109,7 @@ export const PostDetailsTab =  ({ postID }) => {
                                                 onChange={(e)=>{setComment(e.target.value)}}/>
 
                                             <button className="commentInputBtn"
-                                                    onClick={()=>{createComment()}}>Send
+                                                    onClick={()=>{createCommentMutation.mutate({comment: comment, currentUser: currentUser, postInfo: postInfoLoader})}}>Send
                                             </button>
                                          </> : ""}
 

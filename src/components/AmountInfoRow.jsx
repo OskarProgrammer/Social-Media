@@ -9,10 +9,10 @@ export const AmountInfoRow = () => {
     return (
         <div className="numbersTab">
             <div className="followersAmount">
-                Followers : {userInfo?.followers.length} 
+                Followers : {userInfo?.followers?.length} 
             </div>
             <div className="followingAmount">
-                Following : {userInfo?.following.length}
+                Following : {userInfo?.following?.length}
             </div>
         </div>
     )

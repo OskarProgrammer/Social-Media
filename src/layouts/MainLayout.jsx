@@ -10,6 +10,7 @@ import { MessageIcon } from "../components/MessageIcon"
 // importing api functions
 import { useQuery } from "react-query"
 import axios from "axios"
+import { useCurrentUser } from "../custom_hooks/custom"
 
 // contexts
 export const UserContext = createContext(null)
@@ -17,11 +18,7 @@ export const UserContext = createContext(null)
 
 export const MainLayout = () => {
 
-    const {data : currentUser, isLoading} = useQuery({
-        queryFn : async () => await axios.get(`http://localhost:3000/currentUser/`).then( res => res.data),
-        queryKey : ["currentUser"],
-        refetchInterval : 500
-    })
+    const {data : currentUser, isLoading} = useCurrentUser()
 
     if (isLoading){ return <div className="w-full h-screen flex flex-col justify-center items-center text-[50px]">Loading...</div>}
 
@@ -29,8 +26,7 @@ export const MainLayout = () => {
         <>
             <UserContext.Provider value={currentUser}>
                 <NavBar />
-                
-                { currentUser?.id != "" ? <MessageIcon/> : ""}
+                { currentUser?.isLogged  ? <MessageIcon/> : ""}
             </UserContext.Provider>
 
             <div className="m-10 flex justify-center text-white text-2xl p-5 mx-auto">

@@ -14,17 +14,15 @@ import { UserInfoTab } from "../components/UserInfoTab"
 
 // importing functions and components from react library
 import { createContext } from "react"
-import { useQuery } from "react-query"
+
+// importing custom hooks
+import { useCurrentUser } from "../custom_hooks/custom"
 
 export const CurrentUserContext = createContext(null)  
 
 export const AccountMainPage = () => {
 
-    const { data : currentUser, isLoading} = useQuery({
-        queryFn : () => getCurrentUserInfo(),
-        queryKey : [ "currentUserInfo" ],
-        refetchInterval : 500
-    })
+    const {data : currentUser, isLoading } = useCurrentUser()
 
     if (isLoading) { return <div className="accountLayout w-full text-center">Loading profile...</div>}
 

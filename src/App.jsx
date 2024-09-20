@@ -11,10 +11,9 @@ import { MainLayout } from './layouts/MainLayout'
 
 // importing pages
 import { MainPage } from "./pages/MainPage"
-import { loginAction, LoginPage } from './pages/LoginPage'
-import { registerAction, RegisterPage } from './pages/RegisterPage'
+import { LoginPage } from './pages/LoginPage'
+import { RegisterPage } from './pages/RegisterPage'
 import { AccountLayout, accountLoader } from './layouts/AccountLayout'
-import { logOutLoader, LogOutPage } from './pages/LogOutPage'
 import { AccountMainPage } from './pages/AccountMainPage'
 import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
 import { createPostAction, NewPostPage } from './pages/NewPostPage'
@@ -32,10 +31,10 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route index element={<MainPage/>}/>
 
     {/* sign in page */}
-    <Route path="login" element={<LoginPage/>} action={loginAction}/>
+    <Route path="login" element={<LoginPage/>}/>
 
     {/* sign up page */}
-    <Route path="register" element={<RegisterPage/>} action={registerAction}/>
+    <Route path="register" element={<RegisterPage/>}/>
 
     {/* post details page */}
     <Route path="post/:postID" element={<PostDetailsPage/>}/>
@@ -60,9 +59,6 @@ const router = createBrowserRouter(createRoutesFromElements(
 
       {/* messages page */}
       <Route path="messages" element={<MessagesPage/>}/>
-
-      {/* log out page */}
-      <Route path="logOut" element={<LogOutPage/>} loader={logOutLoader}/>
 
     </Route>
 

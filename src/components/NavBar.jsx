@@ -6,9 +6,22 @@ import { NavLink } from "react-router-dom"
 // importing contexts
 import { UserContext } from "../layouts/MainLayout"
 
+// importing api functions
+import { useMutation, useQueryClient } from "react-query"
+import axios from "axios"
+import { redirectToPage } from "../utils/utils"
+
 export const NavBar = ( ) => {
 
+    const queryClient = useQueryClient()
     const currentUser = useContext(UserContext)
+
+    const logOutMutation = useMutation({
+        mutationFn : () => axios.put(`http://localhost:3000/currentUser/`, { id : "", isLogged : false}),
+        onSuccess : () => {
+            queryClient.invalidateQueries(["currentUser"])
+        }
+    })
 
     return (
         <div className="navBar">
@@ -58,9 +71,9 @@ export const NavBar = ( ) => {
                     </> 
                     : 
                     <>
-                        <NavLink to="/account/logOut" className="btn-red">
+                        <button onClick={() => { logOutMutation.mutate() ; redirectToPage("/");}} className="btn-red">
                             <i className="bi bi-box-arrow-right"/>
-                        </NavLink>
+                        </button>
                     </>
                 }
 

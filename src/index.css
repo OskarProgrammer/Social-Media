@@ -16,7 +16,7 @@
 
   .navBar {
     @apply sticky top-0 w-full bg-white p-3 pb-5 flex lg:sm:flex-row sm:flex-col flex-col gap-4 border-b-8 border-gray-950;
-    @apply text-white lg:sm:grid grid-cols-5 text-3xl font-bold;
+    @apply text-white lg:sm:grid grid-cols-5 text-3xl font-bold z-10;
   }
 
   .navBarTitle {
@@ -188,7 +188,7 @@
   }
 
   .liked {
-    @apply text-green-500 drop-shadow shadow-slate-950
+    @apply text-green-500 drop-shadow shadow-slate-950 z-0
   }
 
   .disLiked {

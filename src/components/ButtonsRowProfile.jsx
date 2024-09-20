@@ -13,20 +13,20 @@ export const ButtonsRowProfile = () => {
 
     const toggleFollow = async () => {
         
-        if (userInfo.followers.includes(currentUserInfo.id)){
-            userInfo.followers = userInfo.followers.filter( e => e != currentUserInfo.id )
-            currentUserInfo.following = currentUserInfo.following.filter( e => e != userInfo.id)
+        if (userInfo.followers.includes(currentUserInfo?.id)){
+            userInfo.followers = userInfo.followers.filter( e => e != currentUserInfo?.id )
+            currentUserInfo.following = currentUserInfo.following.filter( e => e != userInfo?.id)
         }else {
-            userInfo.followers.push(currentUserInfo.id)
-            currentUserInfo.following.push(userInfo.id)
+            userInfo.followers.push(currentUserInfo?.id)
+            currentUserInfo.following.push(userInfo?.id)
         }
 
         try {
-            await axios.put(`http://localhost:3000/users/${userInfo.id}`, userInfo)
+            await axios.put(`http://localhost:3000/users/${userInfo?.id}`, userInfo)
         } catch { throw new Error ("Something went wrong during making follow to profile")}
 
         try {
-            await axios.put(`http://localhost:3000/users/${currentUserInfo.id}`, currentUserInfo)
+            await axios.put(`http://localhost:3000/users/${currentUserInfo?.id}`, currentUserInfo)
         } catch { throw new Error ("Something went wrong during making follow to profile")}
         
     }
@@ -34,9 +34,9 @@ export const ButtonsRowProfile = () => {
     return (
         <div className="buttonsRow">
 
-            { currentUserInfo != undefined && currentUserInfo.id != userInfo.id? 
+            { currentUserInfo != undefined && currentUserInfo?.id != userInfo?.id? 
                 <button onClick={()=>{toggleFollow()}} className="btn-blue-light">
-                    { userInfo.followers.includes(currentUserInfo.id) ? "Unfollow" : "Follow"}
+                    { userInfo?.followers?.includes(currentUserInfo?.id) ? "Unfollow" : "Follow"}
                 </button> 
             : ""}
 
