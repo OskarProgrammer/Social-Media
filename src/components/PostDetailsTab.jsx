@@ -49,22 +49,27 @@ export const PostDetailsTab =  ({ postID }) => {
 
     let [isExpanded , setIsExpanded] = useState(false)
     let [comment, setComment] = useState("")
-    let [postInfoLoader, authorInfo] = useData( postID )
+    let [ authorInfo] = useData( postID )
 
     const { data : comments, isLoading, refetch : refreshComments} = useQuery({
         queryFn: () => getCommentsFromPost(postID),
-        queryKey: ["comments"],
+        queryKey: ["comments",postID],
         refetchOnWindowFocus: true,
     })
 
     const { data : currentUser, isLoading : currentUserLoading} = useQuery(
         {
             queryFn: () => getCurrentUserInfo(),
-            queryKey: ["currentUser"],
+            queryKey: ["currentUserInfo"],
             refetchOnWindowFocus: true,
             refetchInterval: 500
         }
     )
+
+    const { data : postInfoLoader, isLoading : postInfoLoaderLoading} = useQuery({
+        queryFn : async () => await axios.get(`http://localhost:3000/posts/${postID}`).then( (res) => { return res.data } ),
+        queryKey : ["postInfo", postID],
+    })
 
     const createComment = async ( ) => {
 
@@ -124,6 +129,7 @@ export const PostDetailsTab =  ({ postID }) => {
         }
     }
 
+    if (postInfoLoaderLoading) { return <div className="postDetails"> <p className="m-5">Loading...</p> </div> }
 
     return (
         <div className="postDetails">
@@ -169,7 +175,10 @@ export const PostDetailsTab =  ({ postID }) => {
                             <i className="bi bi-chat-fill"/>
                             <p className="text-gray-500">Comments {comments?.length}</p>
                         </button>
-                     </> : ""}
+                     </> : <button className={`btn border-0  shadow-none ${isExpanded ? "active" : "notActive"}`} onClick={()=>{setIsExpanded(!isExpanded)}}>
+                            <i className="bi bi-chat-fill"/>
+                            <p className="text-gray-500">Comments {comments?.length}</p>
+                        </button>}
 
                 </div>
 
@@ -192,6 +201,7 @@ export const PostDetailsTab =  ({ postID }) => {
 
                                     </div>
                                     <div className="comments">
+                                        {comments?.length == 0 ? <div className="text-[15px]"> No comments to display </div> : ""}
                                         {comments?.map((comment)=>(
                                             <CommentTab key={comment.id} commentInfo={comment} />
                                         ))}

@@ -10,9 +10,17 @@
     @apply transition-all duration-500 ease-out;
   }
 
+  .efectOfTransitionSlow {
+    @apply transition-all duration-[750ms] ease-out; 
+  }
+
   .navBar {
     @apply sticky top-0 w-full bg-white p-3 pb-5 flex lg:sm:flex-row sm:flex-col flex-col gap-4 border-b-8 border-gray-950;
     @apply text-white lg:sm:grid grid-cols-5 text-3xl font-bold;
+  }
+
+  .navBarTitle {
+    @apply col-start-3 col-span-1 text-gray-950 flex justify-center my-auto text-center animate-pulseTitle;
   }
 
   .accountLayout{
@@ -232,7 +240,7 @@
 
   .btn {
     @apply lg:sm:w-40 w-40 m-3 rounded-lg p-5 font-bold text-lg efectOfTransition;
-    @apply border-4 text-center shadow-inner;
+    @apply border-4 text-center shadow-inner hover:scale-90;
   }
 
   .btn > i {
@@ -325,11 +333,19 @@
   }
 
   .errorPage {
-    @apply bg-red-600 w-screen h-screen text-white flex flex-col
+    @apply text-center w-screen h-screen text-slate-950 flex flex-col p-3 text-[50px] font-extrabold justify-center items-center
   }
 
-  .container {
-    @apply my-auto mx-auto text-center text-5xl text-white font-bold flex flex-col gap-5
+  .linkTag {
+    @apply font-thin p-5 rounded-lg shadow-inner efectOfTransitionSlow shadow-slate-950 text-[30px];
+    @apply hover:shadow-xl hover:bg-slate-950 hover:text-white hover:scale-90;
+  }
+
+  .bug {
+  }
+
+  .bug:hover {
+    @apply animate-wiggle;
   }
 
   .profileImage {

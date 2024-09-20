@@ -7,7 +7,29 @@ export default {
   theme: {
     extend: {
       colors: {},
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { 
+            transform: 'rotate(-9deg)'
+          },
+          '50%': { 
+            transform: 'rotate(9deg)' ,
 
+          },
+        },
+        pulseTitle: {
+          '0% 100%': {
+            transform: 'scale(1)'
+          },
+          '50%': {
+            transform: 'scale(1.05)'
+          }
+        }
+      },
+      animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+        pulseTitle: 'pulseTitle 2s ease-in-out infinite'
+      }
     },
   },
   plugins: [],

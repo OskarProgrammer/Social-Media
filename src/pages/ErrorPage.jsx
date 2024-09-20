@@ -1,19 +1,18 @@
-import { useRouteError } from "react-router-dom"
+import { Link, useRouteError } from "react-router-dom"
+import { PageTitle } from "../components/PageTitle"
 
 export const ErrorPage = () => {
 
     const error = useRouteError()
 
+
     return (
         <div className="errorPage">
-            <div className="container">
-                <div>
-                    Ops there was an error!
-                </div>
-                <div>
-                    ERROR : {error.message}
-                </div>
-            </div>
+            <PageTitle title={`Error`} />
+            <p>Ops there was an error!</p>
+            <p className="text-[25px]">Message : {error.message}</p>
+            <i className="bi bi-bug-fill text-[100px] bug"/>
+            <Link className="linkTag" >Home page</Link>
         </div>
     )
 }

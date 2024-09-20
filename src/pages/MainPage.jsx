@@ -22,14 +22,14 @@ export const MainPage = () => {
     })
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div className="text-slate-950">Loading posts...</div>
     }
 
 
     return (
         <>
             <PageTitle title="Main" />
-            <div className="text-gray-950 flex flex-col gap-5 w-full">
+            <div className="text-gray-950 flex flex-col gap-10 w-full">
 
                 <div className="flex flex-col lg:sm:w-5/12 w-10/12 mx-auto gap-4">
 

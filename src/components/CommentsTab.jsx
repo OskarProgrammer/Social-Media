@@ -19,9 +19,11 @@ export const CommentsTab = () => {
 
     const { data : comments, refetch : refreshComments, isLoading} = useQuery({
         queryFn : () => getCommentsOfUser(currentUser?.id),
-        queryKey : ["comments"],
+        queryKey : ["comments", currentUser?.id],
         retryDelay : 200
     })
+
+    if (isLoading) { return <div className="commentsTab">Loading your comments...</div>}
 
 
     return (

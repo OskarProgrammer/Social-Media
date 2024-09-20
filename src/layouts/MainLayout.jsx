@@ -9,7 +9,6 @@ import { MessageIcon } from "../components/MessageIcon"
 
 // importing api functions
 import { useQuery } from "react-query"
-import { getCurrentUserInfo } from "../api_functions/functions"
 import axios from "axios"
 
 // contexts
@@ -21,10 +20,10 @@ export const MainLayout = () => {
     const {data : currentUser, isLoading} = useQuery({
         queryFn : async () => await axios.get(`http://localhost:3000/currentUser/`).then( res => res.data),
         queryKey : ["currentUser"],
-        refetchInterval : 200
+        refetchInterval : 500
     })
 
-    if (isLoading){ return <div>Loading...</div>}
+    if (isLoading){ return <div className="w-full h-screen flex flex-col justify-center items-center text-[50px]">Loading...</div>}
 
     return (
         <>

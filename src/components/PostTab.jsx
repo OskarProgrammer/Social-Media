@@ -6,10 +6,10 @@ export const PostTab = ( {post} ) => {
 
     const { data : comments, refetch : refreshComments, isLoading} = useQuery({
         queryFn : () => getCommentsFromPost(post.id),
-        queryKey : ["comments"],
+        queryKey : ["comments", post.id],
     })
 
-    if (isLoading) { return <p>Loading...</p>}
+    if (isLoading) { return <div>Loading...</div>}
 
     return (
         <NavLink to={`/post/${post.id}`} className="flex flex-col gap-2 w-full text-[20px] p-3 border-2 border-slate-950 shadow-2xl rounded-lg">

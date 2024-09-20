@@ -20,11 +20,13 @@ export const CurrentUserContext = createContext(null)
 
 export const AccountMainPage = () => {
 
-    const { data : currentUser} = useQuery({
+    const { data : currentUser, isLoading} = useQuery({
         queryFn : () => getCurrentUserInfo(),
-        queryKey : [ "currentUser" ],
+        queryKey : [ "currentUserInfo" ],
         refetchInterval : 500
     })
+
+    if (isLoading) { return <div className="accountLayout w-full text-center">Loading profile...</div>}
 
     return (
         <div className="accountLayout">

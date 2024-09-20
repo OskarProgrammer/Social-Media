@@ -15,12 +15,12 @@ export const PostsTab = ( ) => {
 
     const { data : posts, refetch : refreshPosts, isLoading} = useQuery({
         queryFn : () => getPostsOfUser(currentUser?.id),
-        queryKey : ["posts"],
+        queryKey : ["posts", currentUser?.id],
         refetchInterval: 500
     })
 
     if (isLoading) {
-        return (<p>Loading...</p>)
+        return (<div className="postsTab">Loading posts...</div>)
     }
 
     return (

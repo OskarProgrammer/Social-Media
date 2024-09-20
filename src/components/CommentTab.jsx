@@ -45,6 +45,8 @@ export const CommentTab = ( { commentInfo } ) => {
         refetchInterval : 300
     })
 
+    if (isLoading) { return <p>Loading...</p>}
+
     return (
         <div className="commentTab">
 

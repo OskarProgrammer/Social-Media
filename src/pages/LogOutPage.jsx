@@ -4,6 +4,7 @@ import { redirect, useLoaderData } from "react-router-dom"
 
 // importing api functions
 import axios from "axios"
+import { useMutation } from "react-query"
 
 
 export const LogOutPage = () => {

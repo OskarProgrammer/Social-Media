@@ -29,7 +29,7 @@ export const NavBar = ( ) => {
             </div>
 
             {/* middle of the navBar */}
-            <div className="col-start-3 col-span-1 text-gray-950 flex justify-center my-auto text-center">
+            <div className="navBarTitle">
                 Social Media APP
             </div>
             

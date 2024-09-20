@@ -13,7 +13,7 @@ import { MainLayout } from './layouts/MainLayout'
 import { MainPage } from "./pages/MainPage"
 import { loginAction, LoginPage } from './pages/LoginPage'
 import { registerAction, RegisterPage } from './pages/RegisterPage'
-import { AccountLayout } from './layouts/AccountLayout'
+import { AccountLayout, accountLoader } from './layouts/AccountLayout'
 import { logOutLoader, LogOutPage } from './pages/LogOutPage'
 import { AccountMainPage } from './pages/AccountMainPage'
 import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
@@ -47,7 +47,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="posts/:userID" element={<UserPostsPage/>}/>
 
     {/* account page */}
-    <Route path="account/" element={<AccountLayout/>}>
+    <Route path="account/" element={<AccountLayout/>} loader={accountLoader}>
     
       {/* main account page */}
       <Route index element={<AccountMainPage/>}/>
