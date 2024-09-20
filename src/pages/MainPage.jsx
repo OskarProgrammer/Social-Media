@@ -32,9 +32,14 @@ export const MainPage = () => {
             <div className="text-gray-950 flex flex-col gap-5 w-full">
 
                 <div className="flex flex-col lg:sm:w-5/12 w-10/12 mx-auto gap-4">
+
                     <input type="text" className="inputField" placeholder="Search a post"
                         onChange={(e) => {setFilter(e.target.value)}} value={filter}/>
+
+                    <hr className="line"/>
+
                     <button className="btn-green my-auto mx-auto" onClick={()=>{ setLoad(!load) }}>Search</button>
+
                 </div>
 
                 {posts?.map((post)=>(

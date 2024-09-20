@@ -87,23 +87,27 @@
   }
 
   .inputField {
-    @apply p-3 text-center lg:sm:w-6/12 sm:w-8/12 mx-auto border-b-4 border-b-gray-950 efectOfTransition;
+    @apply p-3 pb-0 text-center lg:sm:w-6/12 sm:w-8/12 mx-auto efectOfTransition;
+  }
+  
+  .line{
+    @apply border-2 border-slate-950 rounded w-0 mx-auto efectOfTransition opacity-0 
   }
 
-  .inputField:hover{
-    @apply bg-gray-950 rounded-tl-lg rounded-tr-lg text-white;
+  .inputField:hover + .line {
+    @apply w-6/12 opacity-100
   }
 
   .inputField:focus{
     outline:none;
   }
 
-  .inputField::placeholder{
-    @apply text-gray-950
+  .inputField:focus + .line {
+    @apply w-6/12 opacity-100
   }
 
-  .inputField::placeholder:hover{
-    @apply text-white
+  .inputField::placeholder{
+    @apply text-gray-950
   }
 
   .titleOfForm {
