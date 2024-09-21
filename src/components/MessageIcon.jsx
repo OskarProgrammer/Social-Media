@@ -9,10 +9,9 @@ import { getAmountOfMessages } from "../api_functions/functions"
 
 export const MessageIcon = () => {
 
-    const { data : amountOfMessages, refetch : refreshAmountOfMessages } = useQuery({
+    const { data : amountOfMessages } = useQuery({
         queryFn : () => getAmountOfMessages(),
-        queryKey : ["amount"],
-        refetchInterval : 500
+        queryKey : ["amount"]
     })
 
     return (

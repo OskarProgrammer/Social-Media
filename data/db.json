@@ -1,7 +1,7 @@
 {
   "currentUser": {
-    "id": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
-    "isLogged": true
+    "id": "",
+    "isLogged": false
   },
   "users": [
     {
@@ -9,7 +9,9 @@
       "login": "Oskar",
       "password": "root",
       "followers": [],
-      "following": [],
+      "following": [
+        "832e8cb4-7b16-4184-b859-be7169a5b5c8"
+      ],
       "messages": [],
       "readMessages": [],
       "isLogged": true
@@ -18,74 +20,16 @@
       "id": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
       "login": "Robert",
       "password": "123",
-      "followers": [],
+      "followers": [
+        "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529"
+      ],
       "following": [],
       "messages": [],
-      "readMessages": [
-        "e2e49ffe-a864-4035-9755-fec7ee71ee62"
-      ],
+      "readMessages": [],
       "isLogged": true
     }
   ],
-  "posts": [
-    {
-      "id": "3a551501-cbfe-446c-a0f5-d539fd046723",
-      "title": "testowe",
-      "desc": "testower",
-      "img": "eww",
-      "likes": [],
-      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
-      "createdAt": "2024-09-20T21:35:54.654Z"
-    },
-    {
-      "id": "e12cbc22-ce3e-4835-94e3-83b8eb2256a7",
-      "title": "te",
-      "desc": "te",
-      "img": "te",
-      "likes": [],
-      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
-      "createdAt": "2024-09-20T21:39:52.109Z"
-    },
-    {
-      "id": "e7e3445f-d6c1-4435-ae24-d7e793ea69bf",
-      "title": "te",
-      "desc": "te",
-      "img": "te",
-      "likes": [],
-      "ownerID": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
-      "createdAt": "2024-09-21T15:55:15.869Z"
-    }
-  ],
-  "comments": [
-    {
-      "id": "d0955df0-c4a2-4b40-becc-59c5a72fe2b3",
-      "ownerID": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
-      "postID": "e12cbc22-ce3e-4835-94e3-83b8eb2256a7",
-      "comment": "e",
-      "createdAt": "2024-09-20T21:41:03.496Z"
-    }
-  ],
-  "notifications": [
-    {
-      "id": "9ff707b2-d13d-43ac-b398-799af487d331",
-      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
-      "message": "New post from ",
-      "postID": "3a551501-cbfe-446c-a0f5-d539fd046723",
-      "createdAt": "2024-09-20T21:35:54.654Z"
-    },
-    {
-      "id": "e2e49ffe-a864-4035-9755-fec7ee71ee62",
-      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
-      "message": "New post from ",
-      "postID": "e12cbc22-ce3e-4835-94e3-83b8eb2256a7",
-      "createdAt": "2024-09-20T21:39:52.109Z"
-    },
-    {
-      "id": "cd80247c-5fee-44f8-90cd-30056a18f452",
-      "ownerID": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
-      "message": "New post from ",
-      "postID": "e7e3445f-d6c1-4435-ae24-d7e793ea69bf",
-      "createdAt": "2024-09-21T15:55:15.869Z"
-    }
-  ]
+  "posts": [],
+  "comments": [],
+  "notifications": []
 }

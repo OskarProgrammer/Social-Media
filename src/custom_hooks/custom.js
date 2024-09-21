@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { getCommentsFromPost, getCurrentUserInfo, getLikesOfUser, getMessages, getPostsOfUser, getUserById } from "../api_functions/functions";
+import { getAuthorOfNotification, getCommentsFromPost, getCurrentUserInfo, getLikesOfUser, getMessages, getNotification, getPostsOfUser, getUserById } from "../api_functions/functions";
 
 
 export const usePost = ({postID}) => useQuery({
@@ -26,7 +26,7 @@ export const useCurrentUser = () => useQuery({
 export const useMessages = () => useQuery({
     queryFn : () => getMessages(),
     queryKey : ["messages"],
-    refetchInterval : 300
+    refetchInterval : 500
 })
 
 export const useFollower = ({followerID}) => useQuery({
@@ -48,3 +48,13 @@ export const usePosts = ({userID}) => useQuery({
     queryFn : ({queryKey}) => getPostsOfUser(queryKey[1]),
     queryKey : ["posts", userID]
 })
+
+export const useNotification = ({notifyID}) => useQuery({
+    queryFn : ({queryKey}) => getNotification(queryKey[1]),
+    queryKey : ["notification", notifyID]
+})
+
+export const useNotifyAuthor = ({notifyID}) => useQuery({
+    queryFn : ({queryKey}) => getAuthorOfNotification(queryKey[1]),
+    queryKey : ["notifyAuthor", notifyID]
+}) 

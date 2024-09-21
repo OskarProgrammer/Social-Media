@@ -16,7 +16,7 @@ import { RegisterPage } from './pages/RegisterPage'
 import { AccountLayout, accountLoader } from './layouts/AccountLayout'
 import { AccountMainPage } from './pages/AccountMainPage'
 import { userInfoLoader, UserInfoPage } from './pages/UserInfoPage'
-import { createPostAction, NewPostPage } from './pages/NewPostPage'
+import { NewPostPage } from './pages/NewPostPage'
 import { PostDetailsPage } from './pages/PostDetailsPage'
 import { ErrorPage } from './pages/ErrorPage'
 import { UserDetailsPage } from './pages/UserDetailsPage'
@@ -51,7 +51,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path="userInfo" element={<UserInfoPage/>} loader={userInfoLoader}/>
 
       {/* new post page */}
-      <Route path="newPost" element={<NewPostPage/>} action={createPostAction}/>
+      <Route path="newPost" element={<NewPostPage/>}/>
 
       {/* messages page */}
       <Route path="messages" element={<MessagesPage/>}/>

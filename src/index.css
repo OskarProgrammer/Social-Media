@@ -150,8 +150,9 @@
   }
 
   .postDetails {
-    @apply lg:sm:w-4/12 w-10/12 shadow-2xl rounded-xl text-center  text-slate-950 shadow-gray-950;
+    @apply lg:sm:w-4/12 w-10/12 rounded-xl text-center bg-white text-slate-950 shadow-inner shadow-slate-950 efectOfTransitionSlow;
     @apply font-bold text-4xl flex flex-col gap-3 p-5 mx-auto;
+    @apply hover:scale-[99%]
   }
 
   .image {

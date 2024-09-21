@@ -29,3 +29,7 @@ export type LikeVariables = {
   postInfo : Post , 
   user : User
 }
+
+export type RemoveNotifyVariables = {
+  user : User
+}

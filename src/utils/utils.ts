@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge"
 import { getHoursDiff, getMinutesDiff, getSecondsDiff } from "../date_functions/date_functions"
 
 // types
-import { LikeVariables, NewCommentVariables, Post, User } from "../types/types"
+import { LikeVariables, NewCommentVariables, Post, RemoveNotifyVariables, User } from "../types/types"
 
 // api
 import axios from "axios"
@@ -77,4 +77,23 @@ export const like = async ( variables : LikeVariables) => {
 
 export const redirectToPage = ( path : string) => {
     window.location.href = path 
+}
+
+export const createPost = async ( newPost : Post) => {
+    await axios.post("http://localhost:3000/posts/", newPost)
+}
+
+export const sendMessage = async (newMessageID : string, followerID : string) => {
+    // getting user
+    let user = await axios.get(`http://localhost:3000/users/${followerID}`).then(res => res.data)
+
+    user.messages.push(newMessageID)
+
+    try {
+        await axios.put(`http://localhost:3000/users/${followerID}`, user)
+    } catch { throw new Error("Error during sending message") }
+}
+
+export const removeNotify = async ( {user} : RemoveNotifyVariables) => {
+    await axios.put(`http://localhost:3000/users/${user.id}`, user)
 }

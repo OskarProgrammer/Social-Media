@@ -1,106 +1,106 @@
 
 // importing api functions
 import axios from "axios"
-import { getCurrentUserInfo } from "../api_functions/functions"
-
-// importing functions and components from react library
-import { Form, redirect, useActionData } from "react-router-dom"
 
 // importing components
 import { PageTitle } from "../components/PageTitle"
+import { useRef, useState } from "react"
+
+
+import { redirectToPage, createPost, sendMessage} from "../utils/utils"
+import { useCurrentUser } from "../custom_hooks/custom"
+import { useMutation, useQueryClient } from "react-query"
 
 
 export const NewPostPage = () => {
 
-    // getting actionData 
-    const actionData = useActionData()
+    const [error, setError] = useState(null)
+    const titleRef = useRef(null)
+    const descRef = useRef(null)
+    const imgRef = useRef(null)
 
+    const {data : currentUser} = useCurrentUser()
+    const queryClient = useQueryClient()
+
+    const createPostMutation = useMutation({
+        mutationFn : createPost,
+        onSuccess : () => {
+            queryClient.invalidateQueries(["posts"])
+        }
+    })
+
+
+    const createPostAction = async () => {
+    
+        const title = titleRef.current.value
+        const desc = descRef.current.value
+        const img = imgRef.current.value
+    
+        // validating data
+        if (!title.length || !desc.length || !img.length) { setError("All fields must be provided"); return }
+    
+        // creating newPostObject
+        const newPostObject = {
+            id : crypto.randomUUID(),
+            title : title,
+            desc : desc,
+            img : img,
+            likes : [],
+            ownerID : currentUser.id,
+            createdAt : new Date()
+        } 
+    
+        createPostMutation.mutate(newPostObject)
+    
+        // creatint newMessageObject
+        const newMessageObject = {
+            id: crypto.randomUUID(),
+            ownerID: currentUser.id,
+            message: "New post from ",
+            postID: newPostObject.id,
+            createdAt: newPostObject.createdAt
+          }
+    
+        // sending messages
+        currentUser.followers.map( async follower => {
+            await sendMessage(newMessageObject.id, follower)
+        })
+    
+        
+        try {
+            await axios.post(`http://localhost:3000/notifications/`, newMessageObject)
+        } catch { setError("Something went wrong during creating notification"); return }
+    
+
+    
+        redirectToPage("/account")
+    }
 
     return (
-        <Form className="form" method="POST" action="/account/newPost/">
+        <form className="form" method="POST" onSubmit={(e)=>{
+            e.preventDefault()
+            createPostAction()
+        }}>
             <PageTitle title="Create new post" />
 
             <h2 className="titleOfForm">Create your new post</h2>
             
-            <input type="text" className="inputField" placeholder="Title"  name="title"/>
+            <input ref={titleRef} type="text" className="inputField" placeholder="Title"  name="title"/>
             <hr className="line" />
 
-            <input type="text" className="inputField" placeholder="Description" name="desc"/>
+            <input ref={descRef} type="text" className="inputField" placeholder="Description" name="desc"/>
             <hr className="line" />
 
-            <input type="text" className="inputField" placeholder="Image" name="img"/>
+            <input ref={imgRef} type="text" className="inputField" placeholder="Image" name="img"/>
             <hr className="line" />
 
-            { actionData && 
-              actionData.error && 
-              <p className="errorMessage"> {actionData.error} </p>
+            {  
+              error && 
+              <p className="errorMessage"> {error} </p>
             }
 
             <button className="btn-green mx-auto">Create</button>
 
-        </Form>
+        </form>
     )
-}
-
-export const createPostAction = async ( { request } ) => {
-    // getting data from request
-    const formData = await request.formData()
-
-    // getting currentUser
-    const currentUser = await getCurrentUserInfo()
-
-    // getting fields
-    const title = formData.get("title")
-    const desc = formData.get("desc")
-    const img = formData.get("img")
-
-    // validating data
-    if (!title.length || !desc.length || !img.length) { return { error : "All fields must be provided" } }
-
-    // creating newPostObject
-    const newPostObject = {
-        id : crypto.randomUUID(),
-        title : title,
-        desc : desc,
-        img : img,
-        likes : [],
-        ownerID : currentUser.id,
-        createdAt : new Date()
-    } 
-
-    // creating new post
-    try {
-        await axios.post("http://localhost:3000/posts/", newPostObject)
-    } catch { return { error : "Something went wrong during creating post" } }
-
-    // creatint newMessageObject
-    const newMessageObject = {
-        id: crypto.randomUUID(),
-        ownerID: currentUser.id,
-        message: "New post from ",
-        postID: newPostObject.id,
-        createdAt: newPostObject.createdAt
-      }
-
-    // sending messages
-    currentUser.followers.map( async follower => {
-        await sendMessage(newMessageObject.id, follower)
-    })
-
-    try {
-        await axios.post(`http://localhost:3000/notifications/`, newMessageObject)
-    } catch { return { error : "Something went wrong during creating notification" } }
-
-    return redirect("/account/")
-}
-
-export const sendMessage = async (newMessageID, followerID) => {
-    // getting user
-    let user = await axios.get(`http://localhost:3000/users/${followerID}`).then(res => res.data)
-
-    user.messages.push(newMessageID)
-
-    try {
-        await axios.put(`http://localhost:3000/users/${followerID}`, user)
-    } catch { throw new Error("Error during sending message") }
 }
