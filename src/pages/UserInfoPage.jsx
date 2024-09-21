@@ -1,7 +1,4 @@
 
-// importing functions and components from react library
-import { useLoaderData } from "react-router-dom"
-import { useState } from "react"
 
 // importing api functions
 import { getCurrentUserInfo } from "../api_functions/functions"
@@ -9,15 +6,13 @@ import { getCurrentUserInfo } from "../api_functions/functions"
 // importing components
 import { PageTitle } from "../components/PageTitle"
 
+// custom hooks
+import { useCurrentUser } from "../custom_hooks/custom"
+
 
 export const UserInfoPage = () => {
 
-    // getting currentUser
-    const currentUserLoader = useLoaderData()
-
-    // creating useState variables
-    let [currentUser, setCurrentUser] = useState(currentUserLoader)
-
+    const { data : currentUser } = useCurrentUser()
 
     return (
         <div className="userTab">

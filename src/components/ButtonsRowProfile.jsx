@@ -4,12 +4,25 @@ import { useContext } from "react"
 
 // importing contexts
 import { CurrentUserContext, UserContext } from "../pages/UserDetailsPage"
+
+// importing api
 import axios from "axios"
+import { useMutation, useQueryClient } from "react-query"
+
+
 
 export const ButtonsRowProfile = () => {
 
     const userInfo = useContext(UserContext)
     const currentUserInfo = useContext(CurrentUserContext)
+    const queryClient = useQueryClient()
+
+    const followMutation = useMutation({
+        mutationFn : async () => await axios.put(`http://localhost:3000/users/${userInfo.id}`, userInfo),
+        onSuccess : () => {
+            queryClient.invalidateQueries({queryKey : ["authorInfo", userInfo.id]})
+        }
+    })
 
     const toggleFollow = async () => {
         
@@ -21,9 +34,7 @@ export const ButtonsRowProfile = () => {
             currentUserInfo.following.push(userInfo?.id)
         }
 
-        try {
-            await axios.put(`http://localhost:3000/users/${userInfo?.id}`, userInfo)
-        } catch { throw new Error ("Something went wrong during making follow to profile")}
+        followMutation.mutate()
 
         try {
             await axios.put(`http://localhost:3000/users/${currentUserInfo?.id}`, currentUserInfo)

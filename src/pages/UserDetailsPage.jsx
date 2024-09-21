@@ -1,11 +1,10 @@
 
 // importing functions and components from react library
-import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
 import { createContext } from "react"
 
 // importing api functions
-import { getCurrentUserInfo, getPostsOfUser, getUserById } from "../api_functions/functions"
+import { useAuthor, useCurrentUser, usePosts } from "../custom_hooks/custom"
 
 // importing componnets
 import { ProfileTitle } from "../components/ProfileTitle"
@@ -22,28 +21,14 @@ export const PostsContext = createContext(null)
 
 export const UserDetailsPage = ( ) => {
 
-    // getting user ID
     const {userID} = useParams()
 
-    // fetching data
-    let {data : userInfo, refetch : refreshUserInfo} = useQuery({
-        queryFn : () => getUserById(userID), 
-        queryKey : [ "userInfo" ],
-        enabled : userID != undefined,
-        refetchInterval : 100
-    })
+    const {data : userInfo } = useAuthor({ ownerID : userID })
 
-    const {data : currentUserInfo, refetch : refreshCurrentUserInfo} = useQuery({
-        queryFn : () => getCurrentUserInfo(), 
-        queryKey : [ "currentUserInfo" ],
-        refetchInterval : 500
-    })
+    const { data : currentUserInfo } = useCurrentUser()
 
-    let {data : userPosts, refetch : refreshUserPosts} = useQuery({
-        queryFn : () => getPostsOfUser(userID), 
-        queryKey : [ "posts" ],
-        refetchInterval : 500
-    })
+    const { data : userPosts } = usePosts({ userID : userID })
+
 
     return (
         <div className="flex flex-col gap-4 text-gray-950 lg:sm:w-6/12 w-full text-center p-3">

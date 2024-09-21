@@ -1,16 +1,14 @@
 {
   "currentUser": {
-    "id": "",
-    "isLogged": false
+    "id": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
+    "isLogged": true
   },
   "users": [
     {
       "id": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
       "login": "Oskar",
       "password": "root",
-      "followers": [
-        "832e8cb4-7b16-4184-b859-be7169a5b5c8"
-      ],
+      "followers": [],
       "following": [],
       "messages": [],
       "readMessages": [],
@@ -21,9 +19,7 @@
       "login": "Robert",
       "password": "123",
       "followers": [],
-      "following": [
-        "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529"
-      ],
+      "following": [],
       "messages": [],
       "readMessages": [
         "e2e49ffe-a864-4035-9755-fec7ee71ee62"
@@ -49,6 +45,15 @@
       "likes": [],
       "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
       "createdAt": "2024-09-20T21:39:52.109Z"
+    },
+    {
+      "id": "e7e3445f-d6c1-4435-ae24-d7e793ea69bf",
+      "title": "te",
+      "desc": "te",
+      "img": "te",
+      "likes": [],
+      "ownerID": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
+      "createdAt": "2024-09-21T15:55:15.869Z"
     }
   ],
   "comments": [
@@ -74,6 +79,13 @@
       "message": "New post from ",
       "postID": "e12cbc22-ce3e-4835-94e3-83b8eb2256a7",
       "createdAt": "2024-09-20T21:39:52.109Z"
+    },
+    {
+      "id": "cd80247c-5fee-44f8-90cd-30056a18f452",
+      "ownerID": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
+      "message": "New post from ",
+      "postID": "e7e3445f-d6c1-4435-ae24-d7e793ea69bf",
+      "createdAt": "2024-09-21T15:55:15.869Z"
     }
   ]
 }
