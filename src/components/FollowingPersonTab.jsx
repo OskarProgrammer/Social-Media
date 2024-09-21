@@ -1,17 +1,10 @@
-import { useQuery } from "react-query"
-import { getUserById } from "../api_functions/functions"
 import { NavLink } from "react-router-dom"
+import { useFollowing } from "../custom_hooks/custom"
 
 
 export const FollowingPersonTab = ( { followingID } ) => {
 
-    const { data : followingInfo, isLoading} = useQuery({
-        queryFn : () => getUserById(followingID),
-        queryKey : ["followingInfo"],
-        refetchInterval : 500,
-        retryDelay : 200
-    })
-
+    const { data : followingInfo, isLoading} = useFollowing({followingID : followingID})
 
     return (
         <NavLink to={`/user/${followingID}`} className="followingPerson">

@@ -17,7 +17,6 @@ export const FollowingsTab = () => {
         <div className="followingTab">
             <p>Following {currentUser?.following.length}</p>
 
-
             <div className="followingsList">
                 
                 {currentUser?.following.map(following => (

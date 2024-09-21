@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { getCommentsFromPost, getCurrentUserInfo, getMessages, getUserById } from "../api_functions/functions";
+import { getCommentsFromPost, getCurrentUserInfo, getLikesOfUser, getMessages, getPostsOfUser, getUserById } from "../api_functions/functions";
 
 
 export const usePost = ({postID}) => useQuery({
@@ -29,3 +29,22 @@ export const useMessages = () => useQuery({
     refetchInterval : 300
 })
 
+export const useFollower = ({followerID}) => useQuery({
+    queryFn : ({queryKey}) => getUserById(queryKey[1]),
+    queryKey : ["follower", followerID]
+})
+
+export const useFollowing = ({followingID}) => useQuery({
+    queryFn : ({queryKey}) => getUserById(queryKey[1]),
+    queryKey : ["following", followingID]
+})
+
+export const useLikes = ({userID}) => useQuery({
+    queryFn : ({queryKey}) => getLikesOfUser(queryKey[1]),
+    queryKey : ["likes", userID]
+})
+
+export const usePosts = ({userID}) => useQuery({
+    queryFn : ({queryKey}) => getPostsOfUser(queryKey[1]),
+    queryKey : ["posts", userID]
+})
