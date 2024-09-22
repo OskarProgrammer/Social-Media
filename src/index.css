@@ -35,7 +35,7 @@
   .tab {
     @apply shadow-lg shadow-slate-950 p-5 rounded-lg min-h-60 h-60 max-h-96 efectOfTransition text-center overflow-hidden ;
     @apply hover:h-full;
-    @apply lg:sm:col-span-2 col-span-full
+    @apply lg:sm:col-span-2 col-span-full animate-fade-down
   }
 
   .followersTab {
@@ -101,6 +101,7 @@
 
   .form {
     @apply lg:sm:w-5/12 sm:w-8/12 w-full rounded-3xl p-5 flex flex-col gap-4 justify-center shadow-2xl text-gray-950;
+    @apply animate-fade-down;
   }
 
   .inputField {
@@ -348,9 +349,6 @@
   .linkTag {
     @apply font-thin p-5 rounded-lg shadow-inner efectOfTransitionSlow shadow-slate-950 text-[30px];
     @apply hover:shadow-xl hover:bg-slate-950 hover:text-white hover:scale-90;
-  }
-
-  .bug {
   }
 
   .bug:hover {

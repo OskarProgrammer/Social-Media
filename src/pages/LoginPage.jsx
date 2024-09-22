@@ -12,6 +12,7 @@ import { PageTitle } from "../components/PageTitle"
 
 // utils
 import { redirectToPage } from "../utils/utils"
+import ScrollAnimation from "react-animate-on-scroll"
 
 
 export const LoginPage = () => {
@@ -49,35 +50,36 @@ export const LoginPage = () => {
 
 
     return (
+        
         <form method="POST" onSubmit={(e) => {
-            e.preventDefault()
-            logIn()
-        }} className="form">
-            <PageTitle title="Sign in" />
+                e.preventDefault()
+                logIn()
+            }} className="form">
+                <PageTitle title="Sign in" />
 
-            <h2 className="titleOfForm">Login form</h2>
+                <h2 className="titleOfForm">Login form</h2>
 
-            <input ref={loginRef} type="text" className="inputField" placeholder="Login" name="login"/>
-            <hr className="line" />
+                <input ref={loginRef} type="text" className="inputField" placeholder="Login" name="login"/>
+                <hr className="line" />
 
-            <input ref={passwordRef} type="password" className="inputField" placeholder="Password" name="password"/>
-            <hr className="line" />
+                <input ref={passwordRef} type="password" className="inputField" placeholder="Password" name="password"/>
+                <hr className="line" />
 
-            <p className="informationTag"> 
-                Haven't got account yet ?  
+                <p className="informationTag"> 
+                    Haven't got account yet ?  
 
-                <Link to="/register" className="linkTo">
-                    Click here
-                </Link>
+                    <Link to="/register" className="linkTo">
+                        Click here
+                    </Link>
 
-            </p>
+                </p>
 
-            { error != null && 
-              <p className="errorMessage"> {error} </p>
-            }
+                { error != null && 
+                <p className="errorMessage"> {error} </p>
+                }
 
-            <button className="btn-green mx-auto">Sign in</button>
+                <button className="btn-green mx-auto">Sign in</button>
 
-        </form>
+            </form>
     )
 }

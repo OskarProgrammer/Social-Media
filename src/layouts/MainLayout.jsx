@@ -9,6 +9,7 @@ import { MessageIcon } from "../components/MessageIcon"
 
 // hooks
 import { useCurrentUser } from "../custom_hooks/custom"
+import ScrollAnimation from "react-animate-on-scroll"
 
 // contexts
 export const UserContext = createContext(null)
@@ -28,7 +29,9 @@ export const MainLayout = () => {
             </UserContext.Provider>
 
             <div className="m-10 flex justify-center text-white text-2xl p-5 mx-auto">
-                <Outlet />
+                
+                    <Outlet/>
+
             </div>
         </>
     )
