@@ -22,16 +22,19 @@ export default {
             transform: 'scale(1)'
           },
           '50%': {
-            transform: 'scale(1.05)'
+            transform: 'scale(1.02)'
           }
         }
       },
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
-        pulseTitle: 'pulseTitle 2s ease-in-out infinite'
+        pulseTitle: 'pulseTitle 2s ease-in-out infinite',
+        pingLike: 'animate-jump 1s ease-in-out 1'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }
 

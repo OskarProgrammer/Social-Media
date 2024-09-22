@@ -198,7 +198,7 @@
   }
 
   .liked {
-    @apply text-green-500 drop-shadow shadow-slate-950 z-0
+    @apply text-green-500 shadow shadow-green-500 z-0 animate-jump;
   }
 
   .disLiked {
