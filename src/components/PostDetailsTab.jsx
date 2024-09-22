@@ -16,6 +16,7 @@ import { cn, createComment, diff, like } from "../utils/utils"
 
 // importing custom hooks
 import { useAuthor, useComments, useCurrentUser, usePost } from "../custom_hooks/custom"
+import ScrollAnimation from "react-animate-on-scroll"
 
 
 export const PostDetailsTab =  ({ postID }) => {
@@ -116,9 +117,16 @@ export const PostDetailsTab =  ({ postID }) => {
                                     </div>
                                     <div className="comments">
                                         {comments?.length == 0 ? <div className="text-[15px]"> No comments to display </div> : ""}
-                                        {comments?.map((comment)=>(
-                                            <CommentTab key={comment.id} commentInfo={comment} />
-                                        ))}
+                                        
+                                        
+                                            {comments?.map((comment)=>(
+                                                <ScrollAnimation key={comment.id} duration={0.5} delay={0.25}
+                                                animatePreScroll={false} animateOnce={true} animateIn="zoomIn" 
+                                                offset={0}>
+                                                    <CommentTab commentInfo={comment} />
+                                                </ScrollAnimation>
+                                            ))}
+                                        
                                     </div>
                                 </div> 
                             : ""}

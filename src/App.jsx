@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 
 // importing css
 import './App.css'
+import "animate.css/animate.compat.css"
 
 // importing layouts
 import { MainLayout } from './layouts/MainLayout'

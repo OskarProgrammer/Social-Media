@@ -152,7 +152,6 @@
   .postDetails {
     @apply lg:sm:w-4/12 w-10/12 rounded-xl text-center bg-white text-slate-950 shadow-inner shadow-slate-950 efectOfTransitionSlow;
     @apply font-bold text-4xl flex flex-col gap-3 p-5 mx-auto;
-    @apply hover:scale-[99%]
   }
 
   .image {
@@ -393,7 +392,7 @@
 
   .messageIcon {
     @apply border-2 flex items-center justify-center efectOfTransition cursor-pointer
-     text-center rounded-full h-20 w-20 fixed right-2 bottom-2 m-8;
+     text-center rounded-full h-20 w-20 fixed right-2 bottom-2 m-8 z-10;
     @apply hover:lg:sm:bg-slate-950 hover:border-white hover:bg-slate-950;
     @apply lg:sm:border-slate-950 lg:sm:text-slate-950;
     @apply border-slate-950 bg-white text-slate-950

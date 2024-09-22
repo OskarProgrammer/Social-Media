@@ -1,7 +1,7 @@
 
 // importing functions and components from react library
 import { useQuery } from "react-query"
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 
 // importing components
 import { PageTitle } from "../components/PageTitle"
@@ -10,6 +10,8 @@ import { PostDetailsTab } from "../components/PostDetailsTab"
 // importing api functions
 import { getPosts } from "../api_functions/functions"
 
+import ScrollAnimation from "react-animate-on-scroll"
+
 export const MainPage = () => {
 
     const [filter, setFilter] = useState("")
@@ -17,8 +19,7 @@ export const MainPage = () => {
 
     const { data : posts, isLoading} = useQuery({
         queryFn: () => getPosts(filter),
-        queryKey: ["posts", { load }],
-        refetchOnWindowFocus: true,
+        queryKey: ["posts", { load }]
     })
 
     if (isLoading) {
@@ -35,16 +36,24 @@ export const MainPage = () => {
 
                     <input type="text" className="inputField" placeholder="Search a post"
                         onChange={(e) => {setFilter(e.target.value)}} value={filter}/>
-
                     <hr className="line"/>
 
                     <button className="btn-green my-auto mx-auto" onClick={()=>{ setLoad(!load) }}>Search</button>
 
                 </div>
 
-                {posts?.map((post)=>(
-                    <PostDetailsTab key={post.id} postID={post.id}/>
-                ))}
+                
+                {posts?.map((post)=>{
+                    return (
+                        <ScrollAnimation duration={1} 
+                                         animatePreScroll={false} animateOnce={true} animateIn="zoomIn" 
+                                         offset={300}>
+                            <PostDetailsTab key={post.id} postID={post.id}/>
+                        </ScrollAnimation>
+                    )
+                })}
+
+                
 
             </div>
         </>
