@@ -1,14 +1,11 @@
-import { useQuery } from "react-query"
+
 import { NavLink } from "react-router-dom"
-import { getCommentsFromPost } from "../api_functions/functions"
+import { useComments } from "../custom_hooks/custom"
+
 
 export const Post = ({postInfo}) => {
     
-    const { data : comments , refetch : refreshComments} = useQuery( {
-        queryFn : () => getCommentsFromPost(postInfo.id),
-        queryKey : ["comments"],
-        refetchInterval : 500
-    })
+    const { data : comments } = useComments({postID : postInfo.id})
 
     return (
         <NavLink to={`/post/${postInfo.id}`} className="post">

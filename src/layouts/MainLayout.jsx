@@ -7,9 +7,7 @@ import { createContext } from "react"
 import { NavBar } from "../components/NavBar"
 import { MessageIcon } from "../components/MessageIcon"
 
-// importing api functions
-import { useQuery } from "react-query"
-import axios from "axios"
+// hooks
 import { useCurrentUser } from "../custom_hooks/custom"
 
 // contexts

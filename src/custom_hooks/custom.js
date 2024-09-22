@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { getAuthorOfNotification, getCommentsFromPost, getCurrentUserInfo, getLikesOfUser, getMessages, getNotification, getPostsOfUser, getUserById } from "../api_functions/functions";
+import { getAuthorOfNotification, getCommentsFromPost, getCommentsOfUser, getCurrentUserInfo, getLikesOfUser, getMessages, getNotification, getPostsOfUser, getUserById } from "../api_functions/functions";
 
 
 export const usePost = ({postID}) => useQuery({
@@ -11,6 +11,11 @@ export const usePost = ({postID}) => useQuery({
 export const useComments = ({postID}) => useQuery({
     queryFn: ({queryKey}) => getCommentsFromPost(queryKey[1]),
     queryKey: ["comments" , postID]
+})
+
+export const useCommentsOfUser = ({userID}) => useQuery({
+    queryFn : ({queryKey}) => getCommentsOfUser(queryKey[1]),
+    queryKey : ["comments", userID]
 })
 
 export const useAuthor = ({ownerID}) => useQuery({

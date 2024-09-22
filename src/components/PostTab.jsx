@@ -1,13 +1,10 @@
-import { useQuery } from "react-query"
+
 import { NavLink } from "react-router-dom"
-import { getCommentsFromPost } from "../api_functions/functions"
+import { useComments } from "../custom_hooks/custom"
 
 export const PostTab = ( {post} ) => {
 
-    const { data : comments, refetch : refreshComments, isLoading} = useQuery({
-        queryFn : () => getCommentsFromPost(post.id),
-        queryKey : ["comments", post.id],
-    })
+    const { data : comments, isLoading} = useComments({postID : post.id})
 
     if (isLoading) { return <div>Loading...</div>}
 

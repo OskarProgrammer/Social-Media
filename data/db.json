@@ -1,7 +1,7 @@
 {
   "currentUser": {
-    "id": "",
-    "isLogged": false
+    "id": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
+    "isLogged": true
   },
   "users": [
     {
@@ -29,7 +29,63 @@
       "isLogged": true
     }
   ],
-  "posts": [],
-  "comments": [],
-  "notifications": []
+  "posts": [
+    {
+      "id": "ef0c5901-17e3-490c-a778-4317e1cabd09",
+      "title": "t",
+      "desc": "t",
+      "img": "t",
+      "likes": [],
+      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
+      "createdAt": "2024-09-22T11:14:50.047Z"
+    },
+    {
+      "id": "ae4c9166-9ecf-4dfd-875c-00261b3eb21f",
+      "title": "t",
+      "desc": "t",
+      "img": "t",
+      "likes": [],
+      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
+      "createdAt": "2024-09-22T11:29:31.516Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": "e6fc62d8-ed68-4b87-8500-23d30454719a",
+      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
+      "postID": "ef0c5901-17e3-490c-a778-4317e1cabd09",
+      "comment": "s",
+      "createdAt": "2024-09-22T11:14:53.922Z"
+    },
+    {
+      "id": "628cee11-f0ab-4bb2-8d39-ba53c1331c0e",
+      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
+      "postID": "ef0c5901-17e3-490c-a778-4317e1cabd09",
+      "comment": "s",
+      "createdAt": "2024-09-22T11:17:12.553Z"
+    },
+    {
+      "id": "4a37d792-42cb-491a-bd71-5d42ad008690",
+      "ownerID": "832e8cb4-7b16-4184-b859-be7169a5b5c8",
+      "postID": "ef0c5901-17e3-490c-a778-4317e1cabd09",
+      "comment": "he",
+      "createdAt": "2024-09-22T11:17:22.388Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "91e9bb8e-4d1d-4177-967a-ca0942d23429",
+      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
+      "message": "New post from ",
+      "postID": "ef0c5901-17e3-490c-a778-4317e1cabd09",
+      "createdAt": "2024-09-22T11:14:50.047Z"
+    },
+    {
+      "id": "82064e7a-b45a-43c0-81b4-0ae13d717be0",
+      "ownerID": "fa9e4a49-72e0-453f-bf60-9e9ae9cf4529",
+      "message": "New post from ",
+      "postID": "ae4c9166-9ecf-4dfd-875c-00261b3eb21f",
+      "createdAt": "2024-09-22T11:29:31.516Z"
+    }
+  ]
 }

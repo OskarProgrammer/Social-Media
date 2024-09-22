@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge"
 import { getHoursDiff, getMinutesDiff, getSecondsDiff } from "../date_functions/date_functions"
 
 // types
-import { LikeVariables, NewCommentVariables, Post, RemoveNotifyVariables, User } from "../types/types"
+import { Comment, LikeVariables, NewCommentVariables, Post, RemoveNotifyVariables, User } from "../types/types"
 
 // api
 import axios from "axios"
@@ -19,7 +19,7 @@ export const cn = (...inputs : ClassValue[]) => {
     return twMerge(clsx(inputs))
 }
 
-export const diff = ( postData : Post) =>{
+export const diff = ( postData : Post | Comment) =>{
     // creating format
     const responseFormat = ( text : string) =>{
         return "Posted " + text + " ago"

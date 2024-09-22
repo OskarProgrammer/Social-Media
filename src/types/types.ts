@@ -19,6 +19,14 @@ export type User = {
   readMessages: string[]
 }
 
+export type Comment = {
+  id: string,
+  ownerID: string,
+  postID: string,
+  comment: string,
+  createdAt: string
+}
+
 export type NewCommentVariables = {
   comment : string,
   currentUser : User,
@@ -33,3 +41,4 @@ export type LikeVariables = {
 export type RemoveNotifyVariables = {
   user : User
 }
+
